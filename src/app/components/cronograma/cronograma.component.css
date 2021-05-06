@@ -1,0 +1,104 @@
+/*NODE CRONOGRAMA*/
+
+#cronograma {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    /*border: solid green;*/
+}
+
+#tableCronograma {
+    padding: 0px;
+    width: 100%;
+}
+
+#tableCronograma caption {
+    font-size: 4vh;
+    padding-bottom: 50px;
+}
+
+#tableCronograma .tht {
+    width: 40%;
+    font-size: 2.1vh;
+    background: #198503;
+    padding: 5px;
+}
+
+.thb {
+    /*background: white;*/
+    background: #198503;
+}
+
+#tableCronograma tr td {
+    border-radius: 5%;
+    font-size: 2vh;
+    padding: 5px;
+    width: 30%;
+    text-align: center;
+}
+
+.tdBtn {
+    padding: 0%;
+    width: auto;
+    background: white;
+    transition: 0.5s;
+}
+
+.imgEdit {
+    width: 5vw;
+    height: 5vh;
+    margin: 0%;
+    padding: 0%;
+}
+
+.tdBtn:hover {
+    background: white;
+    background: rgb(172, 172, 172);
+    border-radius: 10%;
+    transition: 0.5s;
+}
+
+.rowR td {
+    /*background-color: rgb(136, 136, 136);*/
+    background-color: rgb(255, 154, 154);
+}
+
+.rowY td {
+    background-color: rgb(255, 250, 136);
+}
+
+.rowG td {
+    background-color: rgb(164, 255, 164);
+}
+
+.rowE td {
+    background-color: rgb(175, 211, 255);
+}
+
+@media screen and (max-width: 800px) {
+    #cronograma {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100vw;
+    }
+    #tableCronograma {
+        padding: 5vw auto;
+        margin: 5vw auto;
+        width: 90vw;
+    }
+    #oficinaTH {
+        display: none;
+    }
+    .tht {
+        width: auto;
+    }
+    .thb {
+        width: auto;
+    }
+    #tableCronograma tr td {
+        padding: 0px;
+        text-align: center;
+    }
+}
