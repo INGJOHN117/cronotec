@@ -8,6 +8,7 @@ import { CronogramaComponent } from './components/cronograma/cronograma.componen
 import { RegistroSoporteComponent } from './components/registro-soporte/registro-soporte.component';
 import { RegistroEquipoComponent } from './components/registro-equipo/registro-equipo.component';
 import { LoginComponent } from './components/login/login.component';
+import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './components/login/login.component';
     CronogramaComponent,
     RegistroSoporteComponent,
     RegistroEquipoComponent,
-    LoginComponent
+    LoginComponent,
+    HojasDeVidaComponent
   ],
   imports: [
     BrowserModule,
