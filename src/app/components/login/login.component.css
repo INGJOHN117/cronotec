@@ -3,15 +3,12 @@
     padding: 0;
 }
 
-
-/*
 body,
 html {
     height: 100%;
 }
 
-body {
-    
+#contenedor2 {
     background: white;
     margin: 0px;
     padding: 0px;
@@ -19,12 +16,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    
     align-items: center;
-
-}
-
-#contenedor {
     background: white;
     height: 450px;
     flex-basis: 350px;
@@ -32,10 +24,9 @@ body {
     padding: 5px;
     box-shadow: 5px 7px 5px 1px rgb(67, 88, 72);
 }
-*/
 
 img {
-    width: 100%;
+    width: center 50%;
 }
 
 input[type="text"],

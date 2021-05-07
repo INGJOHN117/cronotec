@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HojasDeVidaComponent implements OnInit {
 
+  public datos:string;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log("SE CARGA EL HOJAS DE VIDA")
   }
 
 }

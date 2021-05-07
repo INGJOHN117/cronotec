@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroSoporteComponent implements OnInit {
 
+  public datos:string;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log("SE CARGA EL REGISTRO SOPORTE")
   }
 
 }
