@@ -7,11 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CronogramaComponent implements OnInit {
   public datos:string;
-  @Input() data:Array<any>;
+  @Input() dataToCronograma:Array<any>;
   constructor() { }
 
   ngOnInit(): void {
-    console.log("SE CARGA EL CRONOGRAMA")
+    console.log("SE CARGA EL CRONOGRAMA");
+    console.log("datos entrantes",this.dataToCronograma);
   }
 
 }

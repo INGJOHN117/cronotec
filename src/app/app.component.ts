@@ -9,14 +9,14 @@ import { TestBed } from '@angular/core/testing';
 
 export class AppComponent implements OnInit{
   title = 'cronotec';
-  public datos:Array<any>;
+  public datosApp:Array<any>;
 
   constructor() { 
   }
 
   ngOnInit(): void{
     console.log("hola mundo acavo de nacer")
-    this.datos = [
+    this.datosApp = [
       {nombre: "pc1",proceso: "sistemas", fecha:"7-mayo-2021"},
       {nombre: "pc2",proceso: "sistemas", fecha:"8-mayo-2021"},
       {nombre: "pc3",proceso: "sistemas", fecha:"9-mayo-2021"},
