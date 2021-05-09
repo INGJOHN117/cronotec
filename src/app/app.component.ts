@@ -16,7 +16,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    debugger
     console.log("hola mundo acavo de nacer")
     this.datosApp = [
       {nombre: "pc1",proceso: "sistemas", fecha:"7-mayo-2021"},
@@ -24,15 +23,18 @@ export class AppComponent implements OnInit{
       {nombre: "pc3",proceso: "sistemas", fecha:"9-mayo-2021"},
       {nombre: "pc4",proceso: "sistemas", fecha:"10-mayo-2021"}
   ]
+    console.log(this.datosApp);
+    
     this.cargarDatos()
   }
 
 
   cargarDatos(){
-    debugger
     this.controller.dataSponsor.emit({
       data:this.datosApp
     })
   }
 
+
+  
 }

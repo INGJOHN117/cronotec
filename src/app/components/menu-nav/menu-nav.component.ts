@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu-nav',
@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./menu-nav.component.css']
 })
 export class MenuNavComponent implements OnInit {
-  @Input() dataToCronograma:Array<any>;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log("datos entrantes");
+    
   }
 
 }

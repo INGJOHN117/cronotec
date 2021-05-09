@@ -7,7 +7,7 @@ import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.c
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path:'cronograma', component:CronogramaComponent},
+  {path:'cronograma/:id', component:CronogramaComponent},
   {path:'registroEquipo', component:RegistroEquipoComponent},
   {path:'registroSoporte', component:RegistroSoporteComponent},
   {path:'hojasDeVida', component:HojasDeVidaComponent},

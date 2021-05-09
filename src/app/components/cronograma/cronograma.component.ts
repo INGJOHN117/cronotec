@@ -12,11 +12,15 @@ export class CronogramaComponent implements OnInit {
   constructor(private controller:ControladorService) { }
 
   ngOnInit(): void {
+    console.log('entramossss');
     debugger
-    console.log("SE CARGA EL CRONOGRAMA");
+    console.log('fsdfdsfdsfdsfsdf' , this.controller.emisor());
+    
+
     this.controller.dataSponsor.subscribe(data =>{
+      console.log("datos en cronograma ",data)
       this.dataToCronograma.push(data);
-      console.log(data)
+      
     })
   }
 

@@ -5,7 +5,14 @@ import { Injectable, Output, EventEmitter} from '@angular/core';
   providedIn: 'root'
 })
 export class ControladorService {
-  debugger
   @Output() dataSponsor: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+
+  constructor() {
+    console.log("entro a servicio0");
+   }
+
+   emisor = () => {
+     return this.dataSponsor
+
+   }
 }
