@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ControladorService } from 'src/app/servicios/controlador.service';
 
 @Component({
   selector: 'app-hojas-de-vida',
@@ -6,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hojas-de-vida.component.css']
 })
 export class HojasDeVidaComponent implements OnInit {
-
-  public datos:string;
-
-  constructor() { }
+  public datosApp:Array<any> = [];
+  constructor(private mycontroller:ControladorService) { }
 
   ngOnInit(): void {
-    console.log("SE CARGA EL HOJAS DE VIDA")
+    this.cargarDatos()
   }
 
+  cargarDatos(){
+    console.log(this.mycontroller.loadData());    
+  }
 }
