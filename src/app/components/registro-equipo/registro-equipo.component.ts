@@ -11,8 +11,6 @@ export class RegistroEquipoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log("SE CARGA EL REGISTRO EQUIPO")
-  }
+  ngOnInit(): void { }
 
 }

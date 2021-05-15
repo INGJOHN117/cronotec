@@ -1,4 +1,5 @@
-import { Injectable, Output, EventEmitter} from '@angular/core';
+import { Injectable} from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 
 
 @Injectable({
@@ -6,19 +7,16 @@ import { Injectable, Output, EventEmitter} from '@angular/core';
 })
 
 export class ControladorService {
-  //@Output() dataSponsor: EventEmitter<any> = new EventEmitter();
-  public datosApp:Array<any> = [];
-  constructor() { }
 
-  loadData(){
-    this.datosApp = [
-      {nombre: "pc1",proceso: "sistemas", fecha:"7-mayo-2021"},
-      {nombre: "pc2",proceso: "sistemas", fecha:"8-mayo-2021"},
-      {nombre: "pc3",proceso: "sistemas", fecha:"9-mayo-2021"},
-      {nombre: "pc4",proceso: "sistemas", fecha:"10-mayo-2021"}
-    ]
+  constructor(private http:HttpClient) { }
 
-    return this.datosApp
+  public get(url:string){
+    return this.http.get(url);
   }
 
+  public post(url:string, data:any){
+    debugger;
+    console.log(data);
+    return this.http.post(url,data);
+  }
 }

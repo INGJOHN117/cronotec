@@ -9,6 +9,8 @@ import { RegistroSoporteComponent } from './components/registro-soporte/registro
 import { RegistroEquipoComponent } from './components/registro-equipo/registro-equipo.component';
 import { LoginComponent } from './components/login/login.component';
 import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.c
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

@@ -7,7 +7,7 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
   styleUrls: ['./hojas-de-vida.component.css']
 })
 export class HojasDeVidaComponent implements OnInit {
-  public datosApp:Array<any> = [];
+  public datosApp:any = [];
   constructor(private mycontroller:ControladorService) { }
 
   ngOnInit(): void {
@@ -15,6 +15,9 @@ export class HojasDeVidaComponent implements OnInit {
   }
 
   cargarDatos(){
-    console.log(this.mycontroller.loadData());    
+    this.mycontroller.get('http://localhost/projects/ng/cronotec/src/app/php/api.php').subscribe(data=>{
+      console.log(data);
+      this.datosApp = data;
+    })    
   }
 }

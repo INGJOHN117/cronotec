@@ -8,8 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CronogramaComponent implements OnInit {
   constructor() { }
 
-  ngOnInit(): void {
-    console.log('entramossss');
-  }
+  ngOnInit(): void { }
 
 }
