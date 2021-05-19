@@ -1,9 +1,10 @@
 <div id="cotenedor2">
-    <form id='loginForm'>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
         <img src="./assets/img/big.png" alt="">
-        <input type="text" id="user" name="user" value="" placeholder="USER">
-        <input type="password" id="password" name="password" value="" placeholder="PASSWORD">
-        <button type="submit" (click)="sendData()" id="login">LOGIN</button>
-
+        <input type="text" formControlName="user" id="user" name="user" placeholder="Name User">
+        <div *ngIf="loginForm.get('user').hasError('required') && loginForm.get('user').touched">Es necesario ingresar un usuario</div>
+        <input type="password" formControlName="password" id="password" name="password">
+        <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched ">Es necesario ingresar un password</div>
+        <button [disabled]="loginForm.invalid" type="submit" id="login">LOGIN</button>
     </form>
 </div>

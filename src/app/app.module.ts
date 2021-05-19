@@ -10,6 +10,7 @@ import { RegistroEquipoComponent } from './components/registro-equipo/registro-e
 import { LoginComponent } from './components/login/login.component';
 import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
+
+import { Component} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ControladorService } from 'src/app/servicios/controlador.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent {
 
-  public datos:string;
+  loginForm:FormGroup;
 
-  constructor(private mycontroller:ControladorService) { }
-
-  public sendData(){
-  
-    this.mycontroller.post("http://localhost/projects/ng/cronotec/src/app/php/api.php",
-    {
-      datos: 'hola mundo',
-    }
-    )
-    .subscribe(respuesta => {
-      console.log(respuesta)
+  constructor(private _builder:FormBuilder, private controller:ControladorService) {
+    this.loginForm = this._builder.group({
+      user:["",Validators.required],
+      password:["",Validators.required]
     })
+  }
+
+  login(values){ 
+    this.controller.post("http://localhost:80/projects/ng/cronotec/src/app/php/authenticate.php",values).subscribe(response =>{
+      if(response[0].estado){
+        localStorage.setItem("user",response[0].nombre);
+        localStorage.setItem("cedula",response[0].cedula);
+        alert("Inicio de sesion exitoso")
+        location.href = "/login";
+      }else{
+        alert("usuario o contraseña incorrecto")
+        location.href = "/login";
+      }
+      
+  })
+
   }
 
 
 }
+

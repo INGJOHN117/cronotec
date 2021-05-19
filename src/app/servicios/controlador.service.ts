@@ -15,8 +15,10 @@ export class ControladorService {
   }
 
   public post(url:string, data:any){
-    debugger;
-    console.log(data);
-    return this.http.post(url,data);
+    var formData = new FormData();
+    for (var key in data) {
+      formData.append(key,data[key]);
+    }
+    return this.http.post(url,formData);
   }
 }
