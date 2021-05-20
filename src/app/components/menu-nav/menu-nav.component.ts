@@ -15,9 +15,10 @@ export class MenuNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit NAV");
-    debugger
-    this.controller.searchSession()
+    this.controller.post("http://cuisoft.co/api/authenticate.php",{
+      user:localStorage.getItem('user'),
+      cedula: localStorage.getItem('cedula')
+    })
     .subscribe(data => {
       debugger
       if(data[0].estado){
@@ -26,10 +27,9 @@ export class MenuNavComponent implements OnInit {
         this.sesion = false;
       }
     },error =>{
+      debugger
       console.log(error);
-      
     })
-   
   }
 
 

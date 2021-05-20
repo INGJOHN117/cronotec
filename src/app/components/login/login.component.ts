@@ -20,7 +20,8 @@ export class LoginComponent {
   }
 
   login(values){ 
-    this.controller.post("http://localhost:80/projects/ng/cronotec/src/app/php/authenticate.php",values).subscribe(response =>{
+    //this.controller.post("http://localhost:80/projects/ng/cronotec/src/app/php/authenticate.php",values).subscribe(response =>{
+    this.controller.post("http://cuisoft.co/api/authenticate.php",values).subscribe(response =>{
       if(response[0].estado){
         localStorage.setItem("user",response[0].nombre);
         localStorage.setItem("cedula",response[0].cedula);

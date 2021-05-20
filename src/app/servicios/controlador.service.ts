@@ -24,10 +24,10 @@ export class ControladorService {
   }
 
   public searchSession(){
-    debugger
     var formData = new FormData();
     formData.append('user', localStorage.getItem('user'));
     formData.append('cedula', localStorage.getItem('cedula'));
-    return this.http.post('http://localhost/projects/ng/cronotec/src/app/php/authenticate.php',formData);
+    //return this.http.post('http://localhost/projects/ng/cronotec/src/app/php/authenticate.php',formData);
+    return this.http.post('http://cuisoft.co/api/test.php',formData);
   }
 }
