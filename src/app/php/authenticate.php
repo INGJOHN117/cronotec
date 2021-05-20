@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+searchSession("Mantenimiento Externo","1");
 
 
 if(isset($_POST['user']) and isset($_POST['password'])){
@@ -38,14 +39,13 @@ function newSession($user, $pwd){
 }
 
 
-if(isset($_POST['userr']) and isset($_POST['cedulaa'])){
-
+if(isset($_POST['user']) and isset($_POST['cedula'])){
     searchSession( $_POST['user'], $_POST['cedula']);
 }
 
-//searchSession("1","123");
 function searchSession( $user, $cedula){
     runSession();
+
     if($_SESSION['sessions'][$cedula] == $user){
         $data = array('estado'=>true);
         $data = array($data);

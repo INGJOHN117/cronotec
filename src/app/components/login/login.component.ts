@@ -29,8 +29,7 @@ export class LoginComponent {
       }else{
         alert("usuario o contraseña incorrecto")
         location.href = "/login";
-      }
-      
+      }  
   })
 
   }

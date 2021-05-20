@@ -7,11 +7,11 @@ import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.c
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  {path:'login', component:LoginComponent},
   {path:'cronograma', component:CronogramaComponent},
   {path:'registroEquipo', component:RegistroEquipoComponent},
   {path:'registroSoporte', component:RegistroSoporteComponent},
-  {path:'hojasDeVida', component:HojasDeVidaComponent},
-  {path:'login', component:LoginComponent}
+  {path:'hojasDeVida', component:HojasDeVidaComponent}
 ];
 
 @NgModule({
