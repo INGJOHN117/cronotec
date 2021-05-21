@@ -20,17 +20,20 @@ export class MenuNavComponent implements OnInit {
       cedula: localStorage.getItem('cedula')
     })
     .subscribe(data => {
-      debugger
       if(data[0].estado){
         this.sesion = true;
       }else{
         this.sesion = false;
       }
     },error =>{
-      debugger
       console.log(error);
     })
   }
 
+  logout(){
+    localStorage.clear();
+    this.sesion=false;
+    //location.href = "/login";
+  }
 
 }
