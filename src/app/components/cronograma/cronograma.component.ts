@@ -26,10 +26,29 @@ export class CronogramaComponent implements OnInit {
     })
   }
 
-  defineClassRow(fecha:string):string {
-    console.log(fecha);
-    let clase = "rowG";
+  defineClassRow(fechap: string):string {
+    let clase;
+    if (fechap) {
+      const fecha = new Date(fechap);
+      const today = new Date();
+      const diferencia = Math.abs(today.getTime() - fecha.getTime());
+      const dias = (diferencia / (1000 * 60 * 60 * 24));
+
+      if (dias > 120) {
+        clase = 'rowR';
+      } else if (dias <= 120 && dias > 90) {
+          clase = 'rowY';
+      } else if (dias <= 90) {
+        clase = 'rowG';
+      }
+  } else {
+    clase = 'rowE';
+  }
     return clase;
+  }
+
+  registroSoporte(id: string){
+    localStorage.setItem("view", id);
   }
 
 }

@@ -7,36 +7,13 @@
             <th class="tht">Ultimo Mantenimiento</th>
             <th class="thb"><img class="imgEdit" src="./assets/img/cogs-solid.svg" alt=""></th>
         </tr>
-        <tr *ngFor="let equipo of listaEquipos">
-            <script>
-            texto = "";
-            texto = "class='rowR'";
-            if (equipo.fecha) {
-                var fecha = new Date(equipo.fecha.toString())
-                var today = new Date()
-                var diferencia = Math.abs(today.getTime() - fecha.getTime())
-                var dias = (diferencia / (1000 * 60 * 60 * 24))
-                
-                if (dias > 120) {
-                    texto = "class='rowR'";
-        
-                } else if (dias <= 120 && dias > 90) {
-                    texto = "class='rowY'";
-                } else if (dias <= 90) {
-                    texto = "class='rowG'";
-                }
-            } else {
-                texto = "class='rowE'";
-            }
-            
-            </script>
-            <td><script>console.log(texto)</script>{{equipo.nombrepc}}</td>
+        <tr *ngFor="let equipo of listaEquipos" [class]="defineClassRow(equipo.fecha)">
+            <td>{{equipo.nombrepc}}</td>
             <td>{{equipo.proceso}}</td>
             <td>{{equipo.fecha}}</td>
-            <td  class="tdBtn" id="123">
+            <td  class="tdBtn" [routerLink]="['/registroSoporte']" (click)="registroSoporte(equipo.codigoActivo)" id="123">
                 <img class="imgEdit" src="./assets/img/edit-regular.svg" alt="">
             </td>
         </tr>
-    
     </table>
 </div>

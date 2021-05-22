@@ -76,6 +76,10 @@ table tr td {
     background-color: rgb(175, 211, 255);
 }
 
+.testclass {
+    background: #f00;
+}
+
 @media screen and (max-width: 800px) {
     #cronograma {
         display: flex;
