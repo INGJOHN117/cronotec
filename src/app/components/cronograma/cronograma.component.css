@@ -1,6 +1,6 @@
 /*NODE CRONOGRAMA*/
 
-#cronograma {
+div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -8,17 +8,18 @@
     /*border: solid green;*/
 }
 
-#tableCronograma {
+table {
     padding: 0px;
     width: 100%;
+    background: #2afd00;
 }
 
-#tableCronograma caption {
+table caption {
     font-size: 4vh;
     padding-bottom: 50px;
 }
 
-#tableCronograma .tht {
+table .tht {
     width: 40%;
     font-size: 2.1vh;
     background: #198503;
@@ -30,7 +31,7 @@
     background: #198503;
 }
 
-#tableCronograma tr td {
+table tr td {
     border-radius: 5%;
     font-size: 2vh;
     padding: 5px;
@@ -77,13 +78,13 @@
 }
 
 @media screen and (max-width: 800px) {
-    #cronograma {
+    div {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         width: 100vw;
     }
-    #tableCronograma {
+    table {
         padding: 5vw auto;
         margin: 5vw auto;
         width: 90vw;
@@ -97,7 +98,7 @@
     .thb {
         width: auto;
     }
-    #tableCronograma tr td {
+    table tr td {
         padding: 0px;
         text-align: center;
     }

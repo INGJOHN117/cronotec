@@ -37,8 +37,8 @@ export class ControladorService {
     switch (componentName) {
         case 'cronograma':
             myNode = `
-            <table id="tableCronograma">
-                    <caption>CRONOGRAMA</caption>
+            <table>
+                    <caption>MI CRONOGRAMA</caption>
                     <tr>
                         <th class="tht">Nombre PC</th>
                         <th class="tht" id="oficinaTH">Oficina</th>
@@ -85,7 +85,6 @@ export class ControladorService {
             myNode += `
             </table>
             `
-            console.log("terminado")
             return myNode
             break;
 
