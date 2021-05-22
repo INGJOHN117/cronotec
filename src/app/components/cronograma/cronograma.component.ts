@@ -9,7 +9,8 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
 })
 
 export class CronogramaComponent implements OnInit {
-  @ViewChild("cronograma",{static: false}) cronograma:any;
+  public listaEquipos:any;
+  //@ViewChild("cronograma",{static: false}) cronograma:any;
   constructor(private controller:ControladorService) {
   }
 
@@ -19,8 +20,16 @@ export class CronogramaComponent implements OnInit {
       cedula:localStorage.getItem('cedula'),
       dataNeeds:["cronograma"]
     }).subscribe(data=>{
-      this.cronograma.nativeElement.innerHTML = this.controller.componentLibrary("cronograma",data);
+      //this.cronograma.nativeElement.innerHTML = this.controller.componentLibrary("cronograma",data);
+      this.listaEquipos = data[1];
+      console.log(this.listaEquipos);
     })
+  }
+
+  defineClassRow(fecha:string):string {
+    console.log(fecha);
+    let clase = "rowG";
+    return clase;
   }
 
 }
