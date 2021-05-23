@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 
 
@@ -11,7 +12,7 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
 export class CronogramaComponent implements OnInit {
   public listaEquipos:any;
   //@ViewChild("cronograma",{static: false}) cronograma:any;
-  constructor(private controller:ControladorService) {
+  constructor(private controller:ControladorService, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ export class CronogramaComponent implements OnInit {
   }
 
   registroSoporte(id: string){
-    localStorage.setItem("view", id);
+    this.router.navigate(['registroSoporte',id])
   }
 
 }

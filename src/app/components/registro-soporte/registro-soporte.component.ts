@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroSoporteComponent implements OnInit {
 
-  public datos:string;
+  public codigoActivo:string;
 
-  constructor() { }
+  constructor(private router:Router, private route: ActivatedRoute) { 
+    this.codigoActivo = route.snapshot.paramMap.get('codigoActivo');
+  }
 
   ngOnInit(): void {
     console.log("SE CARGA EL REGISTRO SOPORTE")
   }
 
+  guardarRegistro(){
+    this.router.navigate(['cronograma']);
+  }
 }

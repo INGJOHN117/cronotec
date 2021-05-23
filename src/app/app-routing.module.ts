@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'cronograma', component:CronogramaComponent},
   {path:'registroEquipo', component:RegistroEquipoComponent},
-  {path:'registroSoporte', component:RegistroSoporteComponent},
+  {path:'registroSoporte/:codigoActivo', component:RegistroSoporteComponent},
   {path:'hojasDeVida', component:HojasDeVidaComponent}
 ];
 

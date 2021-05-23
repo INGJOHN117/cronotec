@@ -11,7 +11,7 @@
             <td>{{equipo.nombrepc}}</td>
             <td>{{equipo.proceso}}</td>
             <td>{{equipo.fecha}}</td>
-            <td  class="tdBtn" [routerLink]="['/registroSoporte']" (click)="registroSoporte(equipo.codigoActivo)" id="123">
+            <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="registroSoporte(equipo.codigoActivo)">
                 <img class="imgEdit" src="./assets/img/edit-regular.svg" alt="">
             </td>
         </tr>
