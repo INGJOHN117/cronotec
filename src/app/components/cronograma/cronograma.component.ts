@@ -1,3 +1,4 @@
+import { analyzeNgModules } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
@@ -23,7 +24,7 @@ export class CronogramaComponent implements OnInit {
     }).subscribe(data=>{
       //this.cronograma.nativeElement.innerHTML = this.controller.componentLibrary("cronograma",data);
       this.listaEquipos = data[1];
-      console.log(this.listaEquipos);
+      console.log(data);
     })
   }
 
@@ -50,6 +51,18 @@ export class CronogramaComponent implements OnInit {
 
   registroSoporte(id: string){
     this.router.navigate(['registroSoporte',id])
+  }
+
+  deleteRow(id:string){
+    for (let index = 0; index < this.listaEquipos.length; index++) {
+      if(this.listaEquipos[index].codigoActivo == id){
+        delete this.listaEquipos[index];
+        @ViewChild(id) id:any;
+    myobj.remove();
+      }
+      
+    }
+
   }
 
 }

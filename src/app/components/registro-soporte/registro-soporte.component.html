@@ -1,11 +1,12 @@
 <div id="formRegistro">
     <section id="cuerpo">
-        <h1 class="title-edit">REGISTRO NUEVO EQUIPO </h1>
+        <h1 class="title-edit">REGISTRO SOPORTE ACTIVO N° {{dataJson[1][0].codigoActivo}}</h1>
         <form [formGroup]="registroSoporteForm" (ngSubmit)="guardarRegistro(registroSoporteForm.value)" id="registroSoporte" class="registroSoporte">
             <div class="v_div">
                 <label for="nombre-pc">Nombre pc</label>
                 <input type="text" name="nombrepc" id="nombrepc" value="{{dataJson[1][0].nombrepc}}" readonly>
             </div>
+            <!--+------
             <h2>1. DATOS DEL EQUIPO</h2>
             <br>
             <div class="v_div">
@@ -76,7 +77,6 @@
             <div class="v_div">
                 <table style="width: 100%;">
                     <tr>
-                        <!--<th><label for="nombreequipo">Nombre del Equipo</label></th>-->
                         <th><label>En red</label></th>
                         <th><label>Dirección IP</label></th>
                         <th><label>Dirección MAC</label></th>
@@ -84,7 +84,6 @@
                         <th><label>Marca</label></th>
                     </tr>
                     <tr>
-                        <!--<td><input required class="text-input required-center" type="text" name="nombreequipo" id="nombreequipo"value="{{dataJson[0].nombrepc}}" readonly placeholder="Nombre Equipo"></input required></td>-->
                         <td>
                             <input class="text-input-center" type="text" name="enRed" id="red" value="{{dataJson[1][0].enRed}}" readonly placeholder="SI/NO">
                         </td>
@@ -110,8 +109,8 @@
                 <label for="so">Descripción</label>
                 <input type="text" name="so" id="so" value="{{dataJson[1][0].so}}" readonly placeholder="Sistema Operativo">
             </div>
-
-            <h2>5. MANTENIMIENTO</h2>
+        -->
+            <h2>1. MANTENIMIENTO</h2>
             <div class="">
                 <div class="">
                     <p>
@@ -123,8 +122,6 @@
                     <select required name="realizo" id="realizo">`
                         <option *ngFor="let persona of dataJson[2]" value="{{persona.cedula}}">{{persona.nombre}}</option>
                     </select>
-                    <!--<input required type="text" name="realizo" id="realizo" placeholder="Nombre Profesional de Apoyo"
-                        value="">-->
                     <p>
                         <label for="observaciones">Observaciones</label>
                         <textarea required name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
@@ -147,7 +144,7 @@
                     <img id="img-firm" width="100%" src="" height="auto" alt="">
                 </div>
             </div>
-            <h2>6. UBICACIÓN ACTUAL</h2>
+            <h2>2. UBICACIÓN ACTUAL</h2>
             <div class="">
                 <table class="egt">
                     <tr>
@@ -172,7 +169,7 @@
                     </tr>
                 </table>
             </div>
-            <h2><label for="recomendaciones">7. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
+            <h2><label for="recomendaciones">30. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
             <div class="v_div">
                 <textarea style="box-sizing: border-box;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>{{dataJson[1][0].recomendaciones}}</textarea>
             </div>
