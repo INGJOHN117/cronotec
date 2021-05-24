@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ControladorService } from './../../servicios/controlador.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,16 +11,35 @@ import { Component, OnInit } from '@angular/core';
 export class RegistroSoporteComponent implements OnInit {
 
   public codigoActivo:string;
+  public dataJson:any;
+  registroSoporteForm:FormGroup;
 
-  constructor(private router:Router, private route: ActivatedRoute) { 
+  constructor(private controller: ControladorService, private router:Router, private route: ActivatedRoute, private _builder:FormBuilder) { 
     this.codigoActivo = route.snapshot.paramMap.get('codigoActivo');
+    this.registroSoporteForm = _builder.group({
+      fecharealizacion:["",Validators.required],
+      realizo:["",Validators.required],
+      observaciones:["",Validators.required],
+      usrresponsable:["",Validators.required],
+      dataImagen:["",Validators.required]
+    })
   }
 
   ngOnInit(): void {
-    console.log("SE CARGA EL REGISTRO SOPORTE")
+    this.controller.post("http://cuisoft.co/api/getData.php",{
+      user:localStorage.getItem('user'),
+      cedula:localStorage.getItem('cedula'),
+      dataNeeds:["registroSoporte",this.codigoActivo,"sistemas"]
+    }).subscribe(datas=>{
+      this.dataJson = datas;
+    })
   }
 
-  guardarRegistro(){
+  guardarRegistro(values){
+    values["user"] = localStorage.getItem('user');
+    values["cedula"] = localStorage.getItem('cedula');
+    this.controller.post("ulr",values)
+    alert("Inicio de sesion exitoso")
     this.router.navigate(['cronograma']);
   }
 }

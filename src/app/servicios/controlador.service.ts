@@ -16,6 +16,8 @@ export class ControladorService {
   }
 
   public post(url:string, data:any){
+    console.log(data);
+    debugger;
     var formData = new FormData();
     for (var key in data) {
       formData.append(key,data[key]);
