@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, enableProdMode } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 
@@ -10,7 +10,7 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
 })
 
 export class CronogramaComponent implements OnInit {
-  public listaEquipos:any;
+  public listaEquipos:any = [];
   //@ViewChild("cronograma",{static: false}) cronograma:any;
   constructor(private controller:ControladorService, private router:Router) {
   }
@@ -56,13 +56,8 @@ export class CronogramaComponent implements OnInit {
     let node = document.getElementById(id)
     for (let index = 0; index < this.listaEquipos.length; index++) {
       if(this.listaEquipos[index].codigoActivo == id){
-        node.remove()
-        delete this.listaEquipos[index];
-        
-      }
-      
+        this.listaEquipos[index] = null; 
+      } 
     }
-
   }
-
 }

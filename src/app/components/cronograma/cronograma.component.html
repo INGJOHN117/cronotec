@@ -7,10 +7,14 @@
             <th class="tht">Ultimo Mantenimiento</th>
             <th class="thb"><img class="imgEdit" src="./assets/img/cogs-solid.svg" alt=""></th>
         </tr>
-        <tr *ngFor="let equipo of listaEquipos" [class]="defineClassRow(equipo.fecha)" [id]="equipo.codigoActivo">
+        <tr *ngFor="let equipo of listaEquipos" [class]="defineClassRow(equipo.fecha)">
             <td>{{equipo.nombrepc}}</td>
             <td id="oficinaTH">{{equipo.proceso}}</td>
             <td>{{equipo.fecha}}</td>
+            <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="deleteRow(equipo.codigoActivo)">
+                <img class="imgEdit" src="./assets/img/trash-alt-regular.svg" alt="">
+            </td>
+            <!--
             <div>
                 <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="deleteRow(equipo.codigoActivo)">
                     <img class="imgEdit" src="./assets/img/trash-alt-regular.svg" alt="">
@@ -21,7 +25,7 @@
                 <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="registroSoporte(equipo.codigoActivo)">
                     <img class="imgEdit" src="./assets/img/file-pdf-regular.svg" alt="">
                 </td>
-            </div>
+            </div>-->
         </tr>
     </table>
 </div>
