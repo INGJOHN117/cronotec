@@ -7,7 +7,7 @@
             <th class="tht">Ultimo Mantenimiento</th>
             <th class="thb"><img class="imgEdit" src="./assets/img/cogs-solid.svg" alt=""></th>
         </tr>
-        <tr *ngFor="let equipo of listaEquipos" [class]="defineClassRow(equipo.fecha)" #equipo.codigoActivo>
+        <tr *ngFor="let equipo of listaEquipos" [class]="defineClassRow(equipo.fecha)" [id]="equipo.codigoActivo">
             <td>{{equipo.nombrepc}}</td>
             <td id="oficinaTH">{{equipo.proceso}}</td>
             <td>{{equipo.fecha}}</td>

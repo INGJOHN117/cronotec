@@ -1,4 +1,3 @@
-import { analyzeNgModules } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
@@ -54,11 +53,12 @@ export class CronogramaComponent implements OnInit {
   }
 
   deleteRow(id:string){
+    let node = document.getElementById(id)
     for (let index = 0; index < this.listaEquipos.length; index++) {
       if(this.listaEquipos[index].codigoActivo == id){
+        node.remove()
         delete this.listaEquipos[index];
-        @ViewChild(id) id:any;
-    myobj.remove();
+        
       }
       
     }
