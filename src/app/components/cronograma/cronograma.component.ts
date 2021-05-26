@@ -49,15 +49,10 @@ export class CronogramaComponent implements OnInit {
   }
 
   registroSoporte(id: string){
-    this.router.navigate(['registroSoporte',id])
+    let  texto = `<tr><td valign="top">&nbsp;</td><td><a href="'n-Verlore-Verstand-%5bENG%5d%5bPLAZA%5d-(Torrent).torrent">'n-Verlore-Verstand-..&gt;</a></td><td align="right">2020-07-06 22:33  </td><td align="right"> 15K</td><td>&nbsp;</td></tr>`;
+    console.log(texto.split('"'));
+    //this.router.navigate(['registroSoporte',id])
   }
 
-  deleteRow(id:string){
-    let node = document.getElementById(id)
-    for (let index = 0; index < this.listaEquipos.length; index++) {
-      if(this.listaEquipos[index].codigoActivo == id){
-        this.listaEquipos[index] = null; 
-      } 
-    }
-  }
+  
 }

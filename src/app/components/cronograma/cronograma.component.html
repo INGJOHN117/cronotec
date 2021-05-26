@@ -11,21 +11,14 @@
             <td>{{equipo.nombrepc}}</td>
             <td id="oficinaTH">{{equipo.proceso}}</td>
             <td>{{equipo.fecha}}</td>
-            <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="deleteRow(equipo.codigoActivo)">
-                <img class="imgEdit" src="./assets/img/trash-alt-regular.svg" alt="">
-            </td>
-            <!--
             <div>
-                <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="deleteRow(equipo.codigoActivo)">
-                    <img class="imgEdit" src="./assets/img/trash-alt-regular.svg" alt="">
-                </td>
                 <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="registroSoporte(equipo.codigoActivo)">
                     <img class="imgEdit" src="./assets/img/edit-regular.svg" alt="">
                 </td>
                 <td [class]="defineClassRow(equipo.fecha)" class="tdBtn" (click)="registroSoporte(equipo.codigoActivo)">
                     <img class="imgEdit" src="./assets/img/file-pdf-regular.svg" alt="">
                 </td>
-            </div>-->
+            </div>
         </tr>
     </table>
 </div>
