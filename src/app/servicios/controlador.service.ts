@@ -16,6 +16,16 @@ export class ControladorService {
   }
 
   public post(url:string, data:any){
+    /*
+    url: string => esta siempre sera una cadena de texto que indica la url
+    del api  que provee  los datos 
+
+    data: any => es un array asociativo que contiene los  parametros requeridos
+    para hacer una consulta a la api o los datos que se quieren  enviar
+    uno de elementos de este array es el dataNeeds que es un array que indicara al api las 
+    tablas  de las que desea obtener informacion 
+    
+    */
     var formData = new FormData();
     for (var key in data) {
       formData.append(key,data[key]);

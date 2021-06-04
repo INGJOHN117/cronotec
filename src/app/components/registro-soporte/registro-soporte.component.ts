@@ -38,8 +38,15 @@ export class RegistroSoporteComponent implements OnInit {
   guardarRegistro(values){
     values["user"] = localStorage.getItem('user');
     values["cedula"] = localStorage.getItem('cedula');
-    this.controller.post("ulr",values)
-    alert("Inicio de sesion exitoso")
-    this.router.navigate(['cronograma']);
+    values["tableObjective"] = ["historialdemantenimiento"];
+    this.controller.post("http://cuisoft.co/api/setData.php",values)
+    .subscribe(
+      response =>{
+        console.log(response);
+        debugger
+      }
+    )
+    //alert("Inicio de sesion exitoso")
+    //this.router.navigate(['cronograma']);
   }
 }
