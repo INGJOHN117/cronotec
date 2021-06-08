@@ -23,7 +23,6 @@ export class CronogramaComponent implements OnInit {
     }).subscribe(data=>{
       //this.cronograma.nativeElement.innerHTML = this.controller.componentLibrary("cronograma",data);
       this.listaEquipos = data[1];
-      console.log(data);
     })
   }
 

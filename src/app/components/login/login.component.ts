@@ -1,7 +1,8 @@
-
+import { Router } from '@angular/router';
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ControladorService } from 'src/app/servicios/controlador.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
 
   loginForm:FormGroup;
 
-  constructor(private _builder:FormBuilder, private controller:ControladorService) {
+  constructor(private _builder:FormBuilder, private controller:ControladorService, private router:Router) {
     this.loginForm = this._builder.group({
       user:["",Validators.required],
       password:["",Validators.required]
@@ -25,8 +26,9 @@ export class LoginComponent {
       if(response[0].estado){
         localStorage.setItem("user",response[0].nombre);
         localStorage.setItem("cedula",response[0].cedula);
-        alert("Inicio de sesion exitoso")
+        //alert("Inicio de sesion exitoso")
         location.href = "/cronograma";
+        //this.router.navigate(['cronograma'])
       }else{
         alert("usuario o contraseña incorrecto")
         location.href = "/login";
