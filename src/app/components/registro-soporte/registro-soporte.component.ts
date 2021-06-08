@@ -9,8 +9,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./registro-soporte.component.css']
 })
 export class RegistroSoporteComponent implements OnInit {
-  @ViewChild('canvas',{static:true}) canvas:ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas',{static:true}) 
+  canvas:ElementRef<HTMLCanvasElement>;
   private ctx:CanvasRenderingContext2D;
+  canvasjs = document.getElementById('canvas');
+  
 
   public codigoActivo:string;
   public dataJson:any;
@@ -25,10 +28,17 @@ export class RegistroSoporteComponent implements OnInit {
       usrresponsable:["",Validators.required],
       dataImagen:["",Validators.required]
     })
+
+    
   }
 
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext("2d");
+    this.canvas.nativeElement.getBoundingClientRect();
+    let x;
+    let y;
+    this.canvasActios(x,y,this.canvas);
+    
     this.controller.post("http://cuisoft.co/api/getData.php",{
       user:localStorage.getItem('user'),
       cedula:localStorage.getItem('cedula'),
@@ -53,5 +63,25 @@ export class RegistroSoporteComponent implements OnInit {
     //this.router.navigate(['cronograma']);
   }
 
+  
+  canvasActios(x,y,canvass){
+    canvass.addEventListener('mousedown',function(e){
+      e.preventDefault();
+      x = e.clientX;
+      y = e.clientY;
+      console.log("x: " + x + "y: " + y);
+    })
 
+    canvass.addEventListener('mousemove',function(e){
+      e.preventDefault();
+      x = e.clientX;
+      y = e.clientY;
+      console.log("x: " + x + "y: " + y);
+    })
+  }
+
+  updateXY(){
+
+  }
 }
+
