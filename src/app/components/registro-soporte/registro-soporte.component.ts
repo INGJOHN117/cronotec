@@ -8,22 +8,73 @@ import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angu
   templateUrl: './registro-soporte.component.html',
   styleUrls: ['./registro-soporte.component.css']
 })
+
 export class RegistroSoporteComponent implements OnInit,AfterViewInit {
+  @ViewChild('divcanvas',{static:false}) contenedor:any;
   @ViewChild('canvas',{static:false}) canvas:any;
   private ctx:CanvasRenderingContext2D;
   private points:Array<any> = [];
-  
+  public alto = 300;
+  public divujando = false;
   public codigoActivo:string;
   public dataJson:any;
   registroSoporteForm:FormGroup;
 
-  @HostListener('document:mousemove',['$event'])
-  onMouseMove = (e:any) =>{
-    if(e.target.id == 'canvas'){
-      //console.log(e);
-      this.write(e);
+  @HostListener('document:mousedown',['$event'])
+  onMouseDown = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      this.divujando = true;
     }
   }
+
+  @HostListener('document:touchstart',['$event'])
+  onTouchStart = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      this.divujando = true;
+      this.write(e);
+      console.log("TOUCHSTART")
+    }
+  }
+
+  @HostListener('document:mousemove',['$event'])
+  onMouseMove = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      if(this.divujando){
+        console.log(e)
+        this.write(e);
+      }
+    }
+  }
+
+  @HostListener('document:touchmove',['$event'])
+  onTouchMove = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      if(this.divujando){
+        console.log(e)
+        this.write(e);
+      }
+    }
+  }
+
+  @HostListener('document:mouseup',['$event'])
+  onMouseUp = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      this.divujando = false;
+      this.points = []
+    }
+  }
+
+  @HostListener('document:touchend',['$event'])
+  onTouchEnd = (e:any) =>{
+    if(e.target.id === 'canvas'){
+      this.divujando = false;
+      this.points = []
+      console.log("TOUCHEND")
+    }
+  }
+  
+
+  
   constructor(
     private controller: ControladorService,
     private router:Router,
@@ -58,9 +109,10 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   render(){
     //configura el comportamiento de el canvas
     const canvasEl = this.canvas.nativeElement;
-    console.log(canvasEl);
     this.ctx = canvasEl.getContext("2d");
-    this.ctx.lineWidth = 3;
+    canvasEl.width = this.contenedor.nativeElement.offsetWidth;
+    canvasEl.height = this.alto;
+    this.ctx.lineWidth = 5;
     this.ctx.lineCap = "round";
     this.ctx.strokeStyle = "#000";
   }
@@ -72,13 +124,11 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
       x: res.clientX - rect.left,
       y: res.clientY - rect.top
     }
-
-    console.log(prevPos);
-
+    //console.log(prevPos)
     this.writeSingle(prevPos);
   }
 
-  writeSingle(prevPos){
+  writeSingle = (prevPos) => {
     this.points.push(prevPos);
     if(this.points.length>3){
       const prevPos = this.points[this.points.length-1];
@@ -93,8 +143,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     }
     this.ctx.beginPath();
     if(prevPos){
-      console.log(prevPos.x + "<===>"+prevPos.y)
-      console.log(currentPos.x + "<===>"+currentPos.y)
       this.ctx.moveTo(prevPos.x,prevPos.y);
       this.ctx.lineTo(currentPos.x,currentPos.y);
       this.ctx.stroke();

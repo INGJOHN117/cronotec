@@ -132,9 +132,9 @@
                         <label for="responsable">Responsable</label>
                         <input type="text" name="usrresponsable" id="usrresponsable" value="{{dataJson[1][0].nombre}}" readonly>
                     </p>
-                    <div id="dv" style="border:none" width="100%">
+                    <div #divcanvas id="dv" style="border:none" width="100%">
                         <label for="canvas">Firma Usuario Responsable</label>
-                        <canvas #canvas id="canvas" style="border:solid black 2px; width: 100%; box-sizing: border-box;"></canvas>
+                        <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
                     </div>
                     <button id="clear-firm" type="button" name="button" class="boton_personalizado">Borrar
                         firma</button>
