@@ -1,25 +1,35 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ControladorService } from './../../servicios/controlador.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-registro-soporte',
   templateUrl: './registro-soporte.component.html',
   styleUrls: ['./registro-soporte.component.css']
 })
-export class RegistroSoporteComponent implements OnInit {
-  @ViewChild('canvas',{static:true}) 
-  canvas:ElementRef<HTMLCanvasElement>;
+export class RegistroSoporteComponent implements OnInit,AfterViewInit {
+  @ViewChild('canvas',{static:false}) canvas:any;
   private ctx:CanvasRenderingContext2D;
-  canvasjs = document.getElementById('canvas');
+  private points:Array<any> = [];
   
-
   public codigoActivo:string;
   public dataJson:any;
   registroSoporteForm:FormGroup;
 
-  constructor(private controller: ControladorService, private router:Router, private route: ActivatedRoute, private _builder:FormBuilder) { 
+  @HostListener('document:mousemove',['$event'])
+  onMouseMove = (e:any) =>{
+    if(e.target.id == 'canvas'){
+      //console.log(e);
+      this.write(e);
+    }
+  }
+  constructor(
+    private controller: ControladorService,
+    private router:Router,
+    private route: ActivatedRoute,
+    private _builder:FormBuilder
+    ) { 
     this.codigoActivo = route.snapshot.paramMap.get('codigoActivo');
     this.registroSoporteForm = _builder.group({
       fecharealizacion:["",Validators.required],
@@ -28,17 +38,9 @@ export class RegistroSoporteComponent implements OnInit {
       usrresponsable:["",Validators.required],
       dataImagen:["",Validators.required]
     })
-
-    
   }
 
   ngOnInit(): void {
-    this.ctx = this.canvas.nativeElement.getContext("2d");
-    this.canvas.nativeElement.getBoundingClientRect();
-    let x;
-    let y;
-    this.canvasActios(x,y,this.canvas);
-    
     this.controller.post("http://cuisoft.co/api/getData.php",{
       user:localStorage.getItem('user'),
       cedula:localStorage.getItem('cedula'),
@@ -46,6 +48,60 @@ export class RegistroSoporteComponent implements OnInit {
     }).subscribe(datas=>{
       this.dataJson = datas;
     })
+  }
+
+  ngAfterViewInit(){
+    this.render();
+
+  }
+
+  render(){
+    //configura el comportamiento de el canvas
+    const canvasEl = this.canvas.nativeElement;
+    console.log(canvasEl);
+    this.ctx = canvasEl.getContext("2d");
+    this.ctx.lineWidth = 3;
+    this.ctx.lineCap = "round";
+    this.ctx.strokeStyle = "#000";
+  }
+
+  write(res):any{
+    const canvasEl = this.canvas.nativeElement;
+    const rect = canvasEl.getBoundingClientRect();
+    const prevPos = {
+      x: res.clientX - rect.left,
+      y: res.clientY - rect.top
+    }
+
+    console.log(prevPos);
+
+    this.writeSingle(prevPos);
+  }
+
+  writeSingle(prevPos){
+    this.points.push(prevPos);
+    if(this.points.length>3){
+      const prevPos = this.points[this.points.length-1];
+      const currentPos = this.points[this.points.length-2];  
+      this.drawCanvas(prevPos, currentPos);
+    }
+  }
+
+  drawCanvas(prevPos, currentPos){
+    if(!this.ctx){
+      return;
+    }
+    this.ctx.beginPath();
+    if(prevPos){
+      console.log(prevPos.x + "<===>"+prevPos.y)
+      console.log(currentPos.x + "<===>"+currentPos.y)
+      this.ctx.moveTo(prevPos.x,prevPos.y);
+      this.ctx.lineTo(currentPos.x,currentPos.y);
+      this.ctx.stroke();
+      this.ctx.closePath();
+    }
+
+
   }
 
   guardarRegistro(values){
@@ -63,25 +119,7 @@ export class RegistroSoporteComponent implements OnInit {
     //this.router.navigate(['cronograma']);
   }
 
-  
-  canvasActios(x,y,canvass){
-    canvass.addEventListener('mousedown',function(e){
-      e.preventDefault();
-      x = e.clientX;
-      y = e.clientY;
-      console.log("x: " + x + "y: " + y);
-    })
 
-    canvass.addEventListener('mousemove',function(e){
-      e.preventDefault();
-      x = e.clientX;
-      y = e.clientY;
-      console.log("x: " + x + "y: " + y);
-    })
-  }
 
-  updateXY(){
-
-  }
 }
 
