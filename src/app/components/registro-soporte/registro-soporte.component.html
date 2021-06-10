@@ -1,7 +1,7 @@
 <div id="formRegistro">
     <section id="cuerpo">
         <h1 class="title-edit">REGISTRO SOPORTE ACTIVO N° {{dataJson[1][0].codigoActivo}}</h1>
-        <form [formGroup]="registroSoporteForm" (ngSubmit)="guardarRegistro(registroSoporteForm.value)" id="registroSoporte" class="registroSoporte">
+        <form [formGroup]="registroSoporteForm" (ngSubmit)="guardarRegistro(registroSoporteForm.value)">
             <div class="v_div">
                 <label for="nombre-pc">Nombre pc</label>
                 <input type="text" name="nombrepc" id="nombrepc" value="{{dataJson[1][0].nombrepc}}" readonly>
@@ -111,8 +111,8 @@
             </div>
         -->
             <h2>1. MANTENIMIENTO</h2>
-            <div class="">
-                <div class="">
+            <div>
+                <div>
                     <p>
                         <label for="fecha-realizacion">Fecha Realización</label>
                         <input required type="date" name="fecharealizacion" id="fecharealizacion" value="">
@@ -127,7 +127,7 @@
                         <textarea required name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
                     </p>
                 </div>
-                <div class="">
+                <div>
                     <p>
                         <label for="responsable">Responsable</label>
                         <input type="text" name="usrresponsable" id="usrresponsable" value="{{dataJson[1][0].nombre}}" readonly>
@@ -171,13 +171,13 @@
                     </tr>
                 </table>
             </div>
-            <h2><label for="recomendaciones">30. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
+            <h2><label for="recomendaciones" style="display: none;">3. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
             <div class="v_div">
-                <textarea style="box-sizing: border-box;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>{{dataJson[1][0].recomendaciones}}</textarea>
+                <textarea style="box-sizing: border-box; display:none;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>{{dataJson[1][0].recomendaciones}}</textarea>
             </div>
-            <input style="display: none" type="text" id="nuevo" name="nuevo" value="nuevo">
             <div class="button-container">
-                <button id="" type="submit" class="boton_personalizado" name="button">GUARDAR</button>
+                <!--<button  [disabled]="loginForm.invalid" type="submit" class="boton_personalizado">GUARDAR</button>-->
+                <button type="submit" class="boton_personalizado">GUARDAR</button>
             </div>
             <br>
             <br>

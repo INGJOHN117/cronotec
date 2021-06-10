@@ -77,9 +77,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
       this.pictureImage();
     }
   }
-  
-
-  
+    
   constructor(
     private controller: ControladorService,
     private router:Router,
@@ -157,21 +155,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
 
   }
 
-  guardarRegistro(values){
-    values["user"] = localStorage.getItem('user');
-    values["cedula"] = localStorage.getItem('cedula');
-    values["tableObjective"] = ["historialdemantenimiento"];
-    this.controller.post("http://cuisoft.co/api/setData.php",values)
-    .subscribe(
-      response =>{
-        console.log(response);
-        debugger
-      }
-    )
-    //alert("Inicio de sesion exitoso")
-    //this.router.navigate(['cronograma']);
-  }
-
   borrarFirma(){
     const canvasEl = this.canvas.nativeElement;
     const dataImageEl = this.dataImage.nativeElement;
@@ -190,6 +173,19 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     imageFirmEl.setAttribute("src",canvasEl.toDataURL());
   }
 
-
+  guardarRegistro(values){
+    values["user"] = localStorage.getItem('user');
+    values["cedula"] = localStorage.getItem('cedula');
+    values["tableObjective"] = ["historialdemantenimiento"];
+    this.controller.post("http://cuisoft.co/api/setDataa.php",values)
+    .subscribe(
+      response =>{
+        console.log(response);
+        debugger
+      }
+    )
+    
+    //this.router.navigate(['cronograma']);
+  }
 }
 
