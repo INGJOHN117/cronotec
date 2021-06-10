@@ -12,9 +12,12 @@ import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angu
 export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   @ViewChild('divcanvas',{static:false}) contenedor:any;
   @ViewChild('canvas',{static:false}) canvas:any;
+  @ViewChild('dataImage',{static:false}) dataImage:any;
+  @ViewChild('imageFirm',{static:false}) imageFirm:any;
+
   private ctx:CanvasRenderingContext2D;
   private points:Array<any> = [];
-  public alto = 300;
+  public alto = 400;
   public divujando = false;
   public codigoActivo:string;
   public dataJson:any;
@@ -40,8 +43,9 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   onMouseMove = (e:any) =>{
     if(e.target.id === 'canvas'){
       if(this.divujando){
-        console.log(e)
+        //console.log(e)
         this.write(e);
+        this.pictureImage();
       }
     }
   }
@@ -60,7 +64,8 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   onMouseUp = (e:any) =>{
     if(e.target.id === 'canvas'){
       this.divujando = false;
-      this.points = []
+      this.points = [];
+      this.pictureImage();
     }
   }
 
@@ -69,7 +74,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     if(e.target.id === 'canvas'){
       this.divujando = false;
       this.points = []
-      console.log("TOUCHEND")
+      this.pictureImage();
     }
   }
   
@@ -167,6 +172,23 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     //this.router.navigate(['cronograma']);
   }
 
+  borrarFirma(){
+    const canvasEl = this.canvas.nativeElement;
+    const dataImageEl = this.dataImage.nativeElement;
+    const imageFirmEl = this.imageFirm.nativeElement;
+    this.ctx = canvasEl.getContext("2d");
+    this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    dataImageEl.innerHTML = "";
+    imageFirmEl.setAttribute("src","");
+  }
+
+  pictureImage(){
+    const canvasEl = this.canvas.nativeElement;
+    const dataImageEl = this.dataImage.nativeElement;
+    const imageFirmEl = this.imageFirm.nativeElement;
+    dataImageEl.innerHTML = canvasEl.toDataURL();
+    imageFirmEl.setAttribute("src",canvasEl.toDataURL());
+  }
 
 
 }

@@ -136,12 +136,14 @@
                         <label for="canvas">Firma Usuario Responsable</label>
                         <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
                     </div>
-                    <button id="clear-firm" type="button" name="button" class="boton_personalizado">Borrar
-                        firma</button>
+                    <button id="clearFirm" type="button" name="button" (click)="borrarFirma()" class="boton_personalizado">Borrar firma</button>
                     <button id="send-firm" type="button" name="button" style="display: none">Enviar Firma</button>
-                    <textarea required id="dataImagen" name="dataImagen" width="100%" style="display: none">
+                    <textarea #dataImage required id="dataImagen" name="dataImagen" width="100%" style="display: none">
                     </textarea>
-                    <img id="img-firm" width="100%" src="" height="auto" alt="">
+                    <div>
+                        <img #imageFirm id="img-firm" width="300px" height="300px" src="" height="auto" alt="" style="display: none">
+                    </div>
+
                 </div>
             </div>
             <h2>2. UBICACIÓN ACTUAL</h2>
