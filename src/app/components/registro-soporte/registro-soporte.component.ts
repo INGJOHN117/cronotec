@@ -90,7 +90,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
       realizo:["",Validators.required],
       observaciones:["",Validators.required],
       usrresponsable:["",Validators.required],
-      dataImagen:["",Validators.required]
+      dataImage:["",Validators.required]
     })
   }
 
@@ -174,6 +174,11 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   }
 
   guardarRegistro(values){
+    const canvasEl = this.canvas.nativeElement;
+    values['dataImage'] = canvasEl.toDataURL();
+    console.log(values)
+    debugger
+    /*
     values["user"] = localStorage.getItem('user');
     values["cedula"] = localStorage.getItem('cedula');
     values["tableObjective"] = ["historialdemantenimiento"];
@@ -183,7 +188,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
         console.log(response);
         debugger
       }
-    )
+    )*/
     
     //this.router.navigate(['cronograma']);
   }

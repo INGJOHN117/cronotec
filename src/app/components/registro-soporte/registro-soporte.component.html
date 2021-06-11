@@ -115,33 +115,50 @@
                 <div>
                     <p>
                         <label for="fecha-realizacion">Fecha Realización</label>
-                        <input required type="date" name="fecharealizacion" id="fecharealizacion" value="">
+                        <input formControlName="fecharealizacion" type="date" name="fecharealizacion" id="fecharealizacion" value="">
                     </p>
+                    <div *ngIf="registroSoporteForm.get('fecharealizacion').hasError('required') && registroSoporteForm.get('fecharealizacion').touched">
+                        <p style="color:red">Es necesario ingresar la fecha*</p>
+                        <br>
+                    </div>
 
                     <label for="realizo">Realizó, Nombre del profesional de apoyo</label>
-                    <select required name="realizo" id="realizo">`
+                    <select formControlName="realizo" name="realizo" id="realizo">`
                         <option *ngFor="let persona of dataJson[2]" value="{{persona.cedula}}">{{persona.nombre}}</option>
                     </select>
+                    <div *ngIf="registroSoporteForm.get('realizo').hasError('required') && registroSoporteForm.get('realizo').touched">
+                        <p style="color:red">Es necesario elejir un profesional de apoyo*</p>
+                        <br>
+                    </div>
                     <p>
                         <label for="observaciones">Observaciones</label>
-                        <textarea required name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
+                        <textarea formControlName="observaciones" name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
                     </p>
+                    <div *ngIf="registroSoporteForm.get('observaciones').hasError('required') && registroSoporteForm.get('observaciones').touched">
+                        <p style="color:red">Es necesario observaciones del soporte tecnico*</p>
+                        <br>
+                    </div>
                 </div>
+
                 <div>
                     <p>
-                        <label for="responsable">Responsable</label>
-                        <input type="text" name="usrresponsable" id="usrresponsable" value="{{dataJson[1][0].nombre}}" readonly>
+                        <label for="usrresponsable">Responsable</label>
+                        <input formControlName="usrresponsable" type="text" name="usrresponsable" id="usrresponsable" value="">
                     </p>
+                    <div *ngIf="registroSoporteForm.get('usrresponsable').hasError('required') && registroSoporteForm.get('usrresponsable').touched">
+                        <p style="color:red">Es necesario es necesario el nombre del usuario responsable*</p>
+                        <br>
+                    </div>
                     <div #divcanvas id="dv" style="border:none" width="100%">
                         <label for="canvas">Firma Usuario Responsable</label>
                         <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
                     </div>
                     <button id="clearFirm" type="button" name="button" (click)="borrarFirma()" class="boton_personalizado">Borrar firma</button>
                     <button id="send-firm" type="button" name="button" style="display: none">Enviar Firma</button>
-                    <textarea #dataImage required id="dataImagen" name="dataImagen" width="100%" style="display: none">
+                    <textarea #dataImage formControlName="dataImage" id="dataImage" name="dataImage" width="100%">
                     </textarea>
                     <div>
-                        <img #imageFirm id="img-firm" width="300px" height="300px" src="" height="auto" alt="" style="display: none">
+                        <img #imageFirm id="imgageFirm" width="300px" height="300px" src="" height="auto" alt="" style="display: none">
                     </div>
 
                 </div>
@@ -176,7 +193,7 @@
                 <textarea style="box-sizing: border-box; display:none;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>{{dataJson[1][0].recomendaciones}}</textarea>
             </div>
             <div class="button-container">
-                <!--<button  [disabled]="loginForm.invalid" type="submit" class="boton_personalizado">GUARDAR</button>-->
+                <!--<button [disabled]="registroSoporteForm.invalid" type="submit" class="boton_personalizado">GUARDAR</button>-->
                 <button type="submit" class="boton_personalizado">GUARDAR</button>
             </div>
             <br>

@@ -26,7 +26,6 @@ export class LoginComponent {
       if(response[0].estado){
         localStorage.setItem("user",response[0].nombre);
         localStorage.setItem("cedula",response[0].cedula);
-        //alert("Inicio de sesion exitoso")
         location.href = "/cronograma";
         //this.router.navigate(['cronograma'])
       }else{
