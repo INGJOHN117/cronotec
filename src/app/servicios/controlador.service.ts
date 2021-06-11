@@ -27,7 +27,6 @@ export class ControladorService {
     
     */
     var formData = new FormData();
-    //console.log("<==================================>");
     for (var key in data) {
       formData.append(key,data[key]);
       //console.log(key +"==>"+ data[key]);

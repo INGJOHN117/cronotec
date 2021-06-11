@@ -19,6 +19,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   private points:Array<any> = [];
   public alto = 400;
   public divujando = false;
+  public firmo = false;
   public codigoActivo:string;
   public dataJson:any;
   registroSoporteForm:FormGroup;
@@ -34,8 +35,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   onTouchStart = (e:any) =>{
     if(e.target.id === 'canvas'){
       this.divujando = true;
-      this.write(e);
-      console.log("TOUCHSTART")
     }
   }
 
@@ -43,7 +42,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   onMouseMove = (e:any) =>{
     if(e.target.id === 'canvas'){
       if(this.divujando){
-        //console.log(e)
         this.write(e);
         this.pictureImage();
       }
@@ -64,8 +62,11 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   onMouseUp = (e:any) =>{
     if(e.target.id === 'canvas'){
       this.divujando = false;
-      this.points = [];
       this.pictureImage();
+      if(this.points.length>40){
+        this.firmo = true;
+      }
+      this.points = [];
     }
   }
 
@@ -151,8 +152,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
       this.ctx.stroke();
       this.ctx.closePath();
     }
-
-
   }
 
   borrarFirma(){
@@ -163,6 +162,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
     dataImageEl.innerHTML = "";
     imageFirmEl.setAttribute("src","");
+    this.firmo = false;
   }
 
   pictureImage(){
@@ -174,23 +174,40 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   }
 
   guardarRegistro(values){
-    const canvasEl = this.canvas.nativeElement;
-    values['dataImage'] = canvasEl.toDataURL();
-    console.log(values)
-    debugger
-    /*
+    let nodos = this.callNodes();
+    values['dataImage'] = nodos['canvas'].toDataURL();
+    for (var key in values) {
+      if(values[key]==""){
+        alert("debe diligenciar el campo: "+ key)
+        return;
+      }
+      if(!this.firmo){
+        alert("la firma es elejible, por favor un escribala mas grande")
+        return;
+      }
+    } 
     values["user"] = localStorage.getItem('user');
     values["cedula"] = localStorage.getItem('cedula');
     values["tableObjective"] = ["historialdemantenimiento"];
     this.controller.post("http://cuisoft.co/api/setDataa.php",values)
     .subscribe(
       response =>{
-        console.log(response);
-        debugger
+        console.log("RESPUESTA DE " + response);
+        this.router.navigate(['cronograma']);
+        
       }
-    )*/
+    )
     
-    //this.router.navigate(['cronograma']);
+    
+  }
+
+  callNodes(){
+    let nodos = [];
+    nodos["contenedor"] = this.contenedor.nativeElement;
+    nodos["canvas"] = this.canvas.nativeElement;
+    nodos["dataImage"] = this.dataImage.nativeElement;
+    nodos["imageFirm"] = this.imageFirm.nativeElement;
+    return nodos;
   }
 }
 
