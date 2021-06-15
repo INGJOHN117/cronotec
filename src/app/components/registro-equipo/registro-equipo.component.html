@@ -1,74 +1,137 @@
 <div id="formRegistro">
     <section id="cuerpo">
         <h1 class="title-edit">REGISTRO NUEVO EQUIPO </h1>
-        <form id="registro-hv" class="registro-hv">
+        <form [formGroup]="registroEquipoForm" (ngSubmit)="guardarRegistro(registroEquipoForm.value)">
             <div class="v_div">
                 <label for="nombre-pc">Nombre pc</label>
-                <input type="text" name="nombrepc" id="nombrepc" value="">
+                <input formControlName="nombrepc" type="text" name="nombrepc" id="nombrepc" value="">
+            </div>
+            <div *ngIf="registroEquipoForm.get('nombrepc').hasError('required') && registroEquipoForm.get('nombrepc').touched">
+                <p style="color:red">Es necesario ingresar la fecha*</p><br>
             </div>
             <h2>1. DATOS DEL EQUIPO</h2>
             <br>
             <div class="v_div">
                 <label for="marca">Marca</label>
-                <input required type="text" name="marca" id="marca" value="">
+                <input formControlName="marca" type="text" name="marca" id="marca" value="">
+                <div *ngIf="registroEquipoForm.get('marca').hasError('required') && registroEquipoForm.get('marca').touched">
+                    <p style="color:red">Es necesario ingresar la marca*</p>
+                </div>
+
                 <label for="proveedor">Proveedor</label>
-                <input type="text" name="proveedor" id="proveedor" value="">
+                <input formControlName="proveedor" type="text" name="proveedor" id="proveedor" value="">
+                <div *ngIf="registroEquipoForm.get('proveedor').hasError('required') && registroEquipoForm.get('proveedor').touched">
+                    <p style="color:red">es necesario ingresar el proveedor*</p>
+                </div>
+
                 <label for="modelo">Modelo</label>
-                <input required type="text" name="modelo" id="modelo" value="">
+                <input formControlName="modelo" type="text" name="modelo" id="modelo" value="">
+                <div *ngIf="registroEquipoForm.get('modelo').hasError('required') && registroEquipoForm.get('modelo').touched">
+                    <p style="color:red">es necesario ingresar el modelo*</p>
+                </div>
             </div>
             <h2>2. CONFIGURACIÓN DE HARDWARE</h2>
             <div id="divConfiguracionpc" class="h_div">
                 <div class="v_div" style="width: 50%; padding: 2%;">
                     <label class="p_label" for="codigoActivo">Código Activo</label>
-                    <input required type="text" name="codigoActivo" id="codigoActivo" value="">
+                    <input formControlName="codigoActivo" type="text" name="codigoActivo" id="codigoActivo" value="">
+                    <div *ngIf="registroEquipoForm.get('codigoActivo').hasError('required') && registroEquipoForm.get('codigoActivo').touched">
+                        <p style="color:red">es necesario ingresar el codigoActivo*</p>
+                    </div>
+
 
                     <label for="modeloCPU">Modelo CPU</label>
-                    <input required type="text" name="modeloCPU" id="modeloCPU" value="">
+                    <input formControlName="modeloCPU" type="text" name="modeloCPU" id="modeloCPU" value="">
+                    <div *ngIf="registroEquipoForm.get('modeloCPU').hasError('required') && registroEquipoForm.get('modeloCPU').touched">
+                        <p style="color:red">es necesario ingresar el modelo CPU*</p>
+                    </div>
 
                     <label for="serialCPU">Serial CPU</label>
-                    <input required type="text" name="serialCPU" id="serialCPU" value="">
+                    <input formControlName="serialCPU" type="text" name="serialCPU" id="serialCPU" value="">
+                    <div *ngIf="registroEquipoForm.get('serialCPU').hasError('required') && registroEquipoForm.get('serialCPU').touched">
+                        <p style="color:red">es necesario ingresar el serialCPU*</p>
+                    </div>
 
                     <label for="procesador">Procesador</label>
-                    <input type="text" name="procesador" id="procesador" value="">
+                    <input formControlName="procesador" type="text" name="procesador" id="procesador" value="">
+                    <div *ngIf="registroEquipoForm.get('procesador').hasError('required') && registroEquipoForm.get('procesador').touched">
+                        <p style="color:red">es necesario ingresar el procesador*</p>
+                    </div>
 
-                    <label for="velocidad">Velocidad CPU</label>
-                    <input type="text" name="velocidad" id="velocidad" value="">
+                    <label for="velocidadCPU">Velocidad CPU</label>
+                    <input formControlName="velocidadCPU" type="text" name="velocidadCPU" id="velocidadCPU" value="">
+                    <div *ngIf="registroEquipoForm.get('velocidadCPU').hasError('required') && registroEquipoForm.get('velocidadCPU').touched">
+                        <p style="color:red">es necesario ingresar el</p>
+                    </div>
 
                     <label for="ram">Memoria RAM</label>
-                    <input type="text" name="ram" id="ram" value="">
+                    <input formControlName="ram" type="text" name="ram" id="ram" value="">
+                    <div *ngIf="registroEquipoForm.get('ram').hasError('required') && registroEquipoForm.get('ram').touched">
+                        <p style="color:red">es necesario ingresar la ram*</p>
+                    </div>
 
                     <label for="marcaDD">Marca DD</label>
-                    <input type="text" name="marcaDD" id="marcaDD" value="">
+                    <input formControlName="marcaDD" type="text" name="marcaDD" id="marcaDD" value="">
+                    <div *ngIf="registroEquipoForm.get('marcaDD').hasError('required') && registroEquipoForm.get('marcaDD').touched">
+                        <p style="color:red">es necesario ingresar la marcaDD*</p>
+                    </div>
 
-                    <label for="capacidad">Capacidad DD</label>
-                    <input type="text" name="capacidad" id="capacidad" value="">
+                    <label for="capacidadDD">Capacidad Disco Duro</label>
+                    <input formControlName="capacidadDD" type="text" name="capacidadDD" id="capacidadDD" value="">
+                    <div *ngIf="registroEquipoForm.get('capacidadDD').hasError('required') && registroEquipoForm.get('capacidadDD').touched">
+                        <p style="color:red">es necesario ingresar la capacidad del DD*</p>
+                    </div>
 
                 </div>
                 <div class="v_div" style="width: 50%; padding: 2%;">
 
-                    <label for="tecnologia">Tecnologia DD</label>
-                    <input type="text" name="tecnologia" id="tecnologia" value="">
+                    <label for="tecnologiaDD">Tecnologia DD</label>
+                    <input formControlName="tecnologiaDD" type="text" name="tecnologiaDD" id="tecnologiaDD" value="">
+                    <div *ngIf="registroEquipoForm.get('tecnologiaDD').hasError('required') && registroEquipoForm.get('tecnologiaDD').touched">
+                        <p style="color:red">es necesario ingresar la tecnologia del Disco Duro*</p>
+                    </div>
+
 
                     <label for="monitor">Marca y/o modelo Monitor</label>
-                    <input required type="text" name="monitor" id="monitor" value="">
+                    <input formControlName="mmMonitor" required type="text" name="mmMonitor" id="mmMonitor" value="">
+                    <div *ngIf="registroEquipoForm.get('mmMonitor').hasError('required') && registroEquipoForm.get('mmMonitor').touched">
+                        <p style="color:red">es necesario ingresar la marca o modelo de el monitor*</p>
+                    </div>
 
-                    <label for="serialmonitor">Serial Monitor / Cod Activo</label>
-                    <input required type="text" name="serialmonitor" id="serialmonitor" value="">
+                    <label for="scMonitor">Serial Monitor / Cod Activo</label>
+                    <input formControlName="scMonitor" type="text" name="scMonitor" id="scMonitor" value="">
+                    <div *ngIf="registroEquipoForm.get('scMonitor').hasError('required') && registroEquipoForm.get('scMonitor').touched">
+                        <p style="color:red">es necesario ingresar serial o codigo activo Monitor*</p>
+                    </div>
 
-                    <label for="teclado">Marca y/o modelo Teclado</label>
-                    <input type="text" name="teclado" id="teclado" value="">
+                    <label for="scTeclado">Marca y/o modelo Teclado</label>
+                    <input formControlName="mmTeclado" type="text" name="mmTeclado" id="mmTeclado" value="">
+                    <div *ngIf="registroEquipoForm.get('mmTeclado').hasError('required') && registroEquipoForm.get('mmTeclado').touched">
+                        <p style="color:red">es necesario ingresar la marca o modelo del teclado*</p>
+                    </div>
 
-                    <label for="serialteclado">Serial Teclado</label>
-                    <input type="text" name="serialteclado" id="serialteclado" value="">
+                    <label for="scTeclado">Serial Teclado</label>
+                    <input formControlName="scTeclado" type="text" name="scTeclado" id="scTeclado" value="">
+                    <div *ngIf="registroEquipoForm.get('scTeclado').hasError('required') && registroEquipoForm.get('scTeclado').touched">
+                        <p style="color:red">es necesario ingresar el serialteclado*</p>
+                    </div>
 
-                    <label for="mouse">Marca y/o modelo Mouse</label>
-                    <input type="text" name="mouse" id="mouse" value="">
 
-                    <label for="serialmouse">Serial Mouse</label>
-                    <input type="text" name="serialmouse" id="serialmouse" value="">
+                    <label for="mmMouse">Marca y/o modelo Mouse</label>
+                    <input formControlName="mmMouse" type="text" name="mmMouse" id="mmMouse" value="">
+                    <div *ngIf="registroEquipoForm.get('mmMouse').hasError('required') && registroEquipoForm.get('mmMouse').touched">
+                        <p style="color:red">es necesario ingresar la marca o modelo del mouse*</p>
+                    </div>
+
+                    <label for="scMouse">Serial Mouse</label>
+                    <input formControlName="scMouse" type="text" name="scMouse" id="scMouse" value="">
+                    <div *ngIf="registroEquipoForm.get('scMouse').hasError('required') && registroEquipoForm.get('scMouse').touched">
+                        <p style="color:red">es necesario ingresar el serial o codigo activo del mouse*</p>
+                    </div>
 
                     <label for="otro">Otro</label>
-                    <input type="text" name="otro" id="otro" value="">
+                    <input formControlName="otro" type="text" name="otro" id="otro" value="">
+
                 </div>
             </div>
             <h2>3. CONFIGURACIÓN DE RED</h2>
@@ -76,7 +139,6 @@
             <div class="v_div">
                 <table style="width: 100%;">
                     <tr>
-                        <!--<th><label for="nombreequipo">Nombre del Equipo</label></th>-->
                         <th><label>En red</label></th>
                         <th><label>Dirección IP</label></th>
                         <th><label>Dirección MAC</label></th>
@@ -84,78 +146,96 @@
                         <th><label>Marca</label></th>
                     </tr>
                     <tr>
-                        <!--<td><input required class="text-input required-center" type="text" name="nombreequipo" id="nombreequipo"value="" placeholder="Nombre Equipo"></input required></td>-->
                         <td>
-                            <input class="text-input-center" type="text" name="red" id="red" value="" placeholder="SI/NO">
+                            <input formControlName="enRed" class="text-input-center" type="text" name="enRed" id="enRed" value="" placeholder="SI/NO">
+                            <div *ngIf="registroEquipoForm.get('enRed').hasError('required') && registroEquipoForm.get('enRed').touched">
+                                <p style="color:red">es necesario ingresar red</p>
+                            </div>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="ip" id="ip" value="" placeholder="IP">
+                            <input formControlName="ip" class="text-input-center" type="text" name="ip" id="ip" value="" placeholder="IP">
+                            <div *ngIf="registroEquipoForm.get('ip').hasError('required') && registroEquipoForm.get('ip').touched">
+                                <p style="color:red">es necesario ingresar ip</p>
+                            </div>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="mac" id="mac" value="" placeholder="MAC">
+                            <input formControlName="mac" class="text-input-center" type="text" name="mac" id="mac" value="" placeholder="MAC">
+                            <div *ngIf="registroEquipoForm.get('mac').hasError('required') && registroEquipoForm.get('mac').touched">
+                                <p style="color:red">es necesario ingresar mac</p>
+                            </div>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="velocidadtarjeta" id="velocidadtarjeta" value="" placeholder="Velocidad Tarjeta">
+                            <input formControlName="velocidadTR" class="text-input-center" type="text" name="velocidadTR" id="velocidadTR" value="" placeholder="Velocidad Tarjeta red">
+                            <div *ngIf="registroEquipoForm.get('velocidadTR').hasError('required') && registroEquipoForm.get('velocidadTR').touched">
+                                <p style="color:red">es necesario ingresar velocidad tarjeta de red</p>
+                            </div>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="marcatarjeta" id="marcatarjeta" value="" placeholder="Marca Tarjata">
+                            <input formControlName="marcaTR" class="text-input-center" type="text" name="marcaTR" id="marcaTR" value="" placeholder="Marca Tarjata red">
+                            <div *ngIf="registroEquipoForm.get('marcaTR').hasError('required') && registroEquipoForm.get('marcaTR').touched">
+                                <p style="color:red">es necesario ingresar marca tarjeta de red</p>
+                            </div>
                         </td>
-
                     </tr>
                 </table>
+
+
+
             </div>
 
             <h2>4. SISTEMA OPERATIVO INSTALADO</h2>
             <br>
             <div class="v_div">
                 <label for="so">Descripción</label>
-                <input type="text" name="so" id="so" value="" placeholder="Sistema Operativo">
+                <input formControlName="so" type="text" name="so " id="so " value=" " placeholder="Sistema Operativo ">
+                <div *ngIf="registroEquipoForm.get('so').hasError('required') && registroEquipoForm.get('so').touched ">
+                    <p style="color:red ">es necesario ingresar el sistema operativo</p>
+                </div>
             </div>
 
             <h2>5. UBICACIÓN ACTUAL</h2>
             <br>
-            <div class="v_div">
-                <table style="width: 100%;">
+            <div class="v_div ">
+                <table style="width: 100%; ">
                     <tr>
+                        <th><label> Fecha Entrega</label></th>
                         <th><label> Usuario Responsable</label></th>
-                        <th><label> Ubicación dentro de la empresa</label></th>
-                        <th><label> Fecha</label></th>
-                        <th><label>Entrega</label></th>
                     </tr>
                     <tr>
                         <td>
-                            <input class="text-input-center" type="text" name="usrresponsable" id="usrresponsable" placeholder="Nombre Usuario">
+                            <input formControlName="fechaEntrega" class="text-input-center " type="date " name="fechaEntrega" id="fechaEntrega">
+                            <div *ngIf="registroEquipoForm.get('fechaEntrega').hasError('required') && registroEquipoForm.get('fechaEntrega').touched">
+                                <p style="color:red">es necesario ingresar la fecha de entrega del equipo</p>
+                            </div>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="ubicacion" id="ubicacion" placeholder="Oficina a Cargo">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="date" name="fecha" id="fecha">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="text" name="realizo" id="realizo" placeholder="Nombre">
+                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" placeholder="Nombre Usuario">
+                            <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
+                                <p style="color:red">es necesario ingresar cedula del usuario responsable</p>
+                            </div>
                         </td>
                     </tr>
                 </table>
-                <div id="dv" class="" style="border:none" width="100%">
-                    <label for="canvas">Firma Usr Responsable</label>
-                    <canvas id="canvas" style="border:solid black 2px; width: 100%; box-sizing: border-box;"></canvas>
-                    <button id="clear-firm" type="button" name="button" class="boton_personalizado">Borrar firma</button>
+                <div id="dv " class=" " style="border:none " width="100% ">
+                    <div #divcanvas id="dv" style="border:none" width="100%">
+                        <label for="canvas">Firma Usuario Responsable</label>
+                        <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
+                    </div>
+                    <button id="clearFirm" type="button" name="button" (click)="borrarFirma()" class="boton_personalizado">Borrar firma</button>
                     <button id="send-firm" type="button" name="button" style="display: none">Enviar Firma</button>
-                    <textarea id="data-url" name="data-url" width="100%" style="display: none">
+                    <textarea #dataImage formControlName="dataImage" id="dataImage" name="dataImage" width="100%" style="display: none">
                     </textarea>
-                    <img id="img-firm" src="" alt="">
                 </div>
 
 
             </div>
-            <h2><label for="recomendaciones">6. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
-            <div class="v_div">
-                <textarea style="box-sizing: border-box;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80"></textarea>
+            <h2><label for="recomendaciones ">6. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
+            <div class="v_div ">
+                <textarea formControlName="recomendaciones" style="box-sizing: border-box; " name="recomendaciones " name="recomendaciones " id="recomendaciones " rows="8 " cols="80 "></textarea>
             </div>
-            <input style="display: none" type="text" id="nuevo" name="nuevo" value="nuevo">
-            <div class="button-container">
-                <button id="" type="submit" class="boton_personalizado" name="button">GUARDAR</button>
+
+            <div class="button-container ">
+                <button id=" " type="submit " class="boton_personalizado " name="button ">GUARDAR</button>
             </div>
             <br>
             <br>

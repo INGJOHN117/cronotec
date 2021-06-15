@@ -24,6 +24,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   public dataJson:any;
   registroSoporteForm:FormGroup;
 
+
   @HostListener('document:mousedown',['$event'])
   onMouseDown = (e:any) =>{
     if(e.target.id === 'canvas'){
@@ -63,7 +64,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     if(e.target.id === 'canvas'){
       this.divujando = false;
       this.pictureImage();
-      if(this.points.length>40){
+      if(this.points.length>10){
         this.firmo = true;
       }
       this.points = [];
@@ -107,7 +108,6 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(){
     this.render();
-
   }
 
   render(){
@@ -175,26 +175,27 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
 
   guardarRegistro(values){
     let nodos = this.callNodes();
+    values['codigoActivo'] = this.codigoActivo;
     values['dataImage'] = nodos['canvas'].toDataURL();
+    values["user"] = localStorage.getItem('user');
+    values["cedula"] = localStorage.getItem('cedula');
+    values["tableObjective"] = ["historialdemantenimiento"];
     for (var key in values) {
       if(values[key]==""){
         alert("debe diligenciar el campo: "+ key)
         return;
       }
       if(!this.firmo){
-        alert("la firma es elejible, por favor un escribala mas grande")
+        alert("la firma es elejible, por favor escribela mas grande")
         return;
       }
     } 
-    values["user"] = localStorage.getItem('user');
-    values["cedula"] = localStorage.getItem('cedula');
-    values["tableObjective"] = ["historialdemantenimiento"];
-    this.controller.post("http://cuisoft.co/api/setDataa.php",values)
+    
+    this.controller.post("http://cuisoft.co/api/setData.php",values)
     .subscribe(
       response =>{
-        console.log("RESPUESTA DE " + response);
+        alert("Registro Exitoso puedes verificarlo en las hojas de vida");
         this.router.navigate(['cronograma']);
-        
       }
     )
     
