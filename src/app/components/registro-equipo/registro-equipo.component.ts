@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 
 @Component({
@@ -76,7 +77,7 @@ export class RegistroEquipoComponent implements OnInit {
     }
   }
 
-  constructor(private controller:ControladorService, private _builder:FormBuilder) {
+  constructor(private controller:ControladorService, private _builder:FormBuilder, private router:Router) {
     this.registroEquipoForm = _builder.group({
       nombrepc:["",Validators.required],
       marca:["",Validators.required],
@@ -97,6 +98,7 @@ export class RegistroEquipoComponent implements OnInit {
       scTeclado:["",Validators.required],
       mmMouse:["",Validators.required],
       scMouse:["",Validators.required],
+      otro:[""],
       enRed:["",Validators.required],
       ip:["",Validators.required],
       mac:["",Validators.required],
@@ -104,7 +106,9 @@ export class RegistroEquipoComponent implements OnInit {
       marcaTR:["",Validators.required],
       so:["",Validators.required],
       fechaEntrega:["",Validators.required],
-      cedula:["",Validators.required]
+      cedula:["",Validators.required],
+      dataImage:[""],
+      recomendaciones:[""]
     })
    }
 
@@ -187,6 +191,28 @@ export class RegistroEquipoComponent implements OnInit {
   }
 
   guardarRegistro(values){
+    let nodos = this.callNodes();
+    values['dataImage'] = nodos['canvas'].toDataURL();
+    values["user"] = localStorage.getItem('user');
+    values["cedula"] = localStorage.getItem('cedula');
+    values["tableObjective"] = ["inventario","hojadevida","historiadeusuarios","historialdemantenimiento"];
+    for (var key in values) {
+      if(values[key]==""){
+        alert("debe diligenciar el campo: "+ key)
+        return;
+      }
+      if(!this.firmo){
+        alert("la firma es elejible, por favor escribela mas grande")
+        return;
+      }
+    }
+    this.controller.post("http://cuisoft.co/api/setData.php",values)
+    .subscribe(
+      response =>{
+        alert("Registro Exitoso, puedes verificarlo en las hojas de vida");
+        this.router.navigate(['cronograma']);
+      }
+    )
   }
 
 

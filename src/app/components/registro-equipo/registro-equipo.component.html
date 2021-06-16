@@ -187,23 +187,23 @@
             <br>
             <div class="v_div">
                 <label for="so">Descripción</label>
-                <input formControlName="so" type="text" name="so " id="so " value=" " placeholder="Sistema Operativo ">
-                <div *ngIf="registroEquipoForm.get('so').hasError('required') && registroEquipoForm.get('so').touched ">
-                    <p style="color:red ">es necesario ingresar el sistema operativo</p>
+                <input formControlName="so" type="text" name="so" id="so" value="" placeholder="Sistema Operativo">
+                <div *ngIf="registroEquipoForm.get('so').hasError('required') && registroEquipoForm.get('so').touched">
+                    <p style="color:red">es necesario ingresar el sistema operativo</p>
                 </div>
             </div>
 
             <h2>5. UBICACIÓN ACTUAL</h2>
             <br>
-            <div class="v_div ">
-                <table style="width: 100%; ">
+            <div class="v_div">
+                <table style="width: 100%;">
                     <tr>
                         <th><label> Fecha Entrega</label></th>
                         <th><label> Usuario Responsable</label></th>
                     </tr>
                     <tr>
                         <td>
-                            <input formControlName="fechaEntrega" class="text-input-center " type="date " name="fechaEntrega" id="fechaEntrega">
+                            <input formControlName="fechaEntrega" class="text-input-center" type="date" name="fechaEntrega" id="fechaEntrega">
                             <div *ngIf="registroEquipoForm.get('fechaEntrega').hasError('required') && registroEquipoForm.get('fechaEntrega').touched">
                                 <p style="color:red">es necesario ingresar la fecha de entrega del equipo</p>
                             </div>
@@ -216,7 +216,7 @@
                         </td>
                     </tr>
                 </table>
-                <div id="dv " class=" " style="border:none " width="100% ">
+                <div id="dv" class="" style="border:none" width="100%">
                     <div #divcanvas id="dv" style="border:none" width="100%">
                         <label for="canvas">Firma Usuario Responsable</label>
                         <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
@@ -225,17 +225,20 @@
                     <button id="send-firm" type="button" name="button" style="display: none">Enviar Firma</button>
                     <textarea #dataImage formControlName="dataImage" id="dataImage" name="dataImage" width="100%" style="display: none">
                     </textarea>
+                    <div>
+                        <img #imageFirm id="imgageFirm" width="300px" height="300px" src="" height="auto" alt="" style="display: none">
+                    </div>
                 </div>
 
 
             </div>
-            <h2><label for="recomendaciones ">6. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
-            <div class="v_div ">
-                <textarea formControlName="recomendaciones" style="box-sizing: border-box; " name="recomendaciones " name="recomendaciones " id="recomendaciones " rows="8 " cols="80 "></textarea>
+            <h2><label for="recomendaciones">6. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
+            <div class="v_div">
+                <textarea formControlName="recomendaciones" style="box-sizing: border-box;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80"></textarea>
             </div>
 
-            <div class="button-container ">
-                <button id=" " type="submit " class="boton_personalizado " name="button ">GUARDAR</button>
+            <div class="button-container">
+                <button id="" type="submit" class="boton_personalizado" name="button">GUARDAR</button>
             </div>
             <br>
             <br>
