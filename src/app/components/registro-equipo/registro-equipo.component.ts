@@ -191,13 +191,13 @@ export class RegistroEquipoComponent implements OnInit {
   }
 
   guardarRegistro(values){
-    console.log(values)
-    debugger
+    //console.log(values)
+    //debugger
     let nodos = this.callNodes();
     values['dataImage'] = nodos['canvas'].toDataURL();
     values["user"] = localStorage.getItem('user');
     values["cedula"] = localStorage.getItem('cedula');
-    values["tableObjective"] = ["inventario","hojadevida","historialdeusuarios","historialdemantenimiento"];
+    values["tableObjective"] = ["inventario"];
     for (var key in values) {
       if(values[key]==""){
         alert("debe diligenciar el campo: "+ key)
@@ -208,13 +208,15 @@ export class RegistroEquipoComponent implements OnInit {
         return;
       }
     }
-    this.controller.post("http://cuisoft.co/api/setDatas.php",values)
+    this.controller.post("http://cuisoft.co/api/setData.php",values)
     .subscribe(
       response =>{
         alert("Registro Exitoso, puedes verificarlo en las hojas de vida");
-        this.router.navigate(['cronograma']);
+        //this.router.navigate(['cronograma']);
+        //debugger
       }
     )
+    debugger
   }
 
 
