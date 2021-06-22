@@ -197,7 +197,7 @@ export class RegistroEquipoComponent implements OnInit {
     values['dataImage'] = nodos['canvas'].toDataURL();
     values["user"] = localStorage.getItem('user');
     values["cedula"] = localStorage.getItem('cedula');
-    values["tableObjective"] = ["inventario"];
+    values["tableObjective"] = ["hojadevida","inventario"];
     for (var key in values) {
       if(values[key]==""){
         alert("debe diligenciar el campo: "+ key)
