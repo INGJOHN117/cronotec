@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,14 +10,19 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
   styleUrls: ['./registro-equipo.component.css']
 })
 export class RegistroEquipoComponent implements OnInit {
+
   @ViewChild('divcanvas',{static:false}) contenedor:any;
   @ViewChild('canvas',{static:false}) canvas:any;
   @ViewChild('dataImage',{static:false}) dataImage:any;
   @ViewChild('imageFirm',{static:false}) imageFirm:any;
+  @ViewChild('cedula',{static:false}) cedula:any;
+  @ViewChild('newUserdiv',{static:false}) newUserdiv:any;
 
 
   private ctx:CanvasRenderingContext2D;
   private points:Array<any> = [];
+  private usuarios:Array<any> = [];
+  private sistemas:Array<any> = [];
   public alto = 400;
   public divujando = false;
   public firmo = false;
@@ -110,6 +116,15 @@ export class RegistroEquipoComponent implements OnInit {
       dataImage:[""],
       recomendaciones:[""]
     })
+
+    controller.post("http://cuisoft.co/api/getData.php",{"dataNeeds":["usuarios","sistemas"]})
+    .subscribe(data =>{
+      console.log(data)
+      debugger
+      this.sistemas = data[1];
+      this.usuarios = data[2];
+    })
+
    }
 
   ngOnInit(): void { }
@@ -189,6 +204,18 @@ export class RegistroEquipoComponent implements OnInit {
     nodos["imageFirm"] = this.imageFirm.nativeElement;
     return nodos;
   }
+  
+  exitUser(value){
+    const cedula  = this.cedula.nativeElement;
+    const newUserdiv = this.newUserdiv.nativeElement;
+    newUserdiv.style("display:none");
+
+    if(this.sistemas.includes(cedula.value)){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   guardarRegistro(values){
     //console.log(values)
@@ -218,6 +245,5 @@ export class RegistroEquipoComponent implements OnInit {
     )
     debugger
   }
-
 
 }

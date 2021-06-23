@@ -199,7 +199,7 @@
                 <table style="width: 100%;">
                     <tr>
                         <th><label> Fecha Entrega</label></th>
-                        <th><label> Usuario Responsable</label></th>
+                        <th><label> Cedula Usuario Responsable</label></th>
                     </tr>
                     <tr>
                         <td>
@@ -209,13 +209,36 @@
                             </div>
                         </td>
                         <td>
-                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" placeholder="Nombre Usuario">
+                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value=""  placeholder="cedula Usuario">
                             <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
                                 <p style="color:red">es necesario ingresar cedula del usuario responsable</p>
                             </div>
                         </td>
                     </tr>
                 </table>
+                <div #newUserdiv>
+                    <!--<table style="width: 100%;">
+                        <tr>
+                            <th><label> nombre</label></th>
+                            <th><label> apellido</label></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input formControlName="fechaEntrega" class="text-input-center" type="date" name="fechaEntrega" id="fechaEntrega">
+                                <div *ngIf="registroEquipoForm.get('fechaEntrega').hasError('required') && registroEquipoForm.get('fechaEntrega').touched">
+                                    <p style="color:red">es necesario ingresar la fecha de entrega del equipo</p>
+                                </div>
+                            </td>
+                            <td>
+                                <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value=""  placeholder="cedula Usuario">
+                                <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
+                                    <p style="color:red">es necesario ingresar cedula del usuario responsable</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                -->
+                </div>
                 <div id="dv" class="" style="border:none" width="100%">
                     <div #divcanvas id="dv" style="border:none" width="100%">
                         <label for="canvas">Firma Usuario Responsable</label>
