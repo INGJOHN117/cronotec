@@ -10,7 +10,7 @@ export class MenuNavComponent implements OnInit {
   sesion:boolean = false;
 
   constructor(private controller:ControladorService) {
-    console.log("CONSTRUCTOR NAV");
+    //console.log("CONSTRUCTOR NAV");
     
   }
 

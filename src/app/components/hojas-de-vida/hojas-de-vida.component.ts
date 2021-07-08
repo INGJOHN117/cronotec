@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 
@@ -7,17 +8,20 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
   styleUrls: ['./hojas-de-vida.component.css']
 })
 export class HojasDeVidaComponent implements OnInit {
-  public datosApp:any = [];
-  constructor(private mycontroller:ControladorService) { }
+  formulario:FormGroup;
+
+  constructor(private _builder:FormBuilder) {
+    this.formulario = this._builder.group({
+      nombre:["",Validators.required],
+      proveedor:["",Validators.required],
+      db:["",Validators.required]
+    })
+   }
 
   ngOnInit(): void {
-    this.cargarDatos()
   }
 
-  cargarDatos(){
-    this.mycontroller.get('http://localhost/projects/ng/cronotec/src/app/php/api.php').subscribe(data=>{
-      console.log(data);
-      this.datosApp = data;
-    })    
+  enviar(value){
+
   }
 }

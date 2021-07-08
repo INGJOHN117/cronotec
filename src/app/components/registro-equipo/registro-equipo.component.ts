@@ -21,12 +21,13 @@ export class RegistroEquipoComponent implements OnInit {
 
   private ctx:CanvasRenderingContext2D;
   private points:Array<any> = [];
-  private usuarios:Array<any> = [];
-  private sistemas:Array<any> = [];
+  public usuarios:any = [];
+  public sistemas:any = [];
   public alto = 400;
   public divujando = false;
   public firmo = false;
   registroEquipoForm:FormGroup;
+  usuario = false;
 
   @HostListener('document:mousedown',['$event'])
   onMouseDown = (e:any) =>{
@@ -117,17 +118,22 @@ export class RegistroEquipoComponent implements OnInit {
       recomendaciones:[""]
     })
 
-    controller.post("http://cuisoft.co/api/getData.php",{"dataNeeds":["usuarios","sistemas"]})
-    .subscribe(data =>{
-      console.log(data)
-      debugger
-      this.sistemas = data[1];
-      this.usuarios = data[2];
-    })
+    
 
    }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.controller.post("http://cuisoft.co/api/getData.php",{
+      //user:localStorage.getItem('user'),
+      //cedula:localStorage.getItem('cedula'),  
+      dataNeeds:["usuarios","sistemas"]})
+    .subscribe(data =>{
+      console.log(data)
+      //debugger
+      this.sistemas = data[1];
+      this.usuarios = data[2];
+    })
+  }
 
   ngAfterViewInit(){
     this.render();
@@ -204,22 +210,29 @@ export class RegistroEquipoComponent implements OnInit {
     nodos["imageFirm"] = this.imageFirm.nativeElement;
     return nodos;
   }
+  saludo(){
+    console.log(this.usuarios);
+  }
   
-  exitUser(value){
-    const cedula  = this.cedula.nativeElement;
-    const newUserdiv = this.newUserdiv.nativeElement;
-    newUserdiv.style("display:none");
-
-    if(this.sistemas.includes(cedula.value)){
-      return true;
+  buscarusuario(event:any){
+    //const cedula  = this.cedula.nativeElement;
+    //const newUserdiv = this.newUserdiv.nativeElement;
+    //console.log(event.target.value)
+    console.log(this.usuarios);
+    //console.log(this.usuarios.some(item => item.mombre == "Gerardo Torres"));
+    /*if(this.usuarios.some(item => item.cedula === "1000000")){
+      this.usuario = true;
+      console.log("esta");
     }else{
-      return false;
-    }
+      this.usuario = false;
+      console.log("no esta");
+    }*/
   }
 
   guardarRegistro(values){
     //console.log(values)
     //debugger
+
     let nodos = this.callNodes();
     values['dataImage'] = nodos['canvas'].toDataURL();
     values["user"] = localStorage.getItem('user');

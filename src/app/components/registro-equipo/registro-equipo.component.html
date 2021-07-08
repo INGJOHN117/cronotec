@@ -187,7 +187,7 @@
             <br>
             <div class="v_div">
                 <label for="so">Descripción</label>
-                <input formControlName="so" type="text" name="so" id="so" value="" placeholder="Sistema Operativo">
+                <input formControlName="so" type="text" name="so" id="so" value="" (click)="saludo()" placeholder="Sistema Operativo">
                 <div *ngIf="registroEquipoForm.get('so').hasError('required') && registroEquipoForm.get('so').touched">
                     <p style="color:red">es necesario ingresar el sistema operativo</p>
                 </div>
@@ -209,15 +209,16 @@
                             </div>
                         </td>
                         <td>
-                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value=""  placeholder="cedula Usuario">
+                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" (keyup)="buscarusuario($event)" placeholder="cedula Usuario">
                             <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
                                 <p style="color:red">es necesario ingresar cedula del usuario responsable</p>
                             </div>
                         </td>
                     </tr>
                 </table>
-                <div #newUserdiv>
-                    <!--<table style="width: 100%;">
+                <!--<div #newUserdiv>
+                    <h1>SALUDOS</h1>
+                    <table style="width: 100%;">
                         <tr>
                             <th><label> nombre</label></th>
                             <th><label> apellido</label></th>
@@ -237,8 +238,8 @@
                             </td>
                         </tr>
                     </table>
-                -->
-                </div>
+                
+                </div>-->
                 <div id="dv" class="" style="border:none" width="100%">
                     <div #divcanvas id="dv" style="border:none" width="100%">
                         <label for="canvas">Firma Usuario Responsable</label>

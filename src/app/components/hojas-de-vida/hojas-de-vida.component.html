@@ -1,7 +1,17 @@
-<table>
-    <tr *ngFor="let item of datosApp">
-        <td>
-            {{item?.nombre}}
-        </td>
-    </tr>
-</table>
+<form [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
+    <h1>CARGAR DATOS DE CLIENTES </h1>
+    <label for="nombre">nombre campaña</label>
+    <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="nombre de campaña">
+    <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched">Es necesario ingresar un usuario</div>
+
+    <label for="proveedor">proveedor</label>
+    <input formControlName="proveedor" class="form-control" type="text" id="proveedor" placeholder="nombre del proveedor">
+    <div *ngIf="formulario.get('proveedor').hasError('required') && formulario.get('proveedor').touched">Es necesario ingresar un usuario</div>
+
+    <label for="db">base de datos</label>
+    <input formControlName="db" type="file"  class="form-control-file" id="db">
+    <div *ngIf="formulario.get('db').hasError('required') && formulario.get('db').touched">Es necesario ingresar un usuario</div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
