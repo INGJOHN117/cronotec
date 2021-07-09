@@ -42,6 +42,33 @@ export class ControladorService {
     return this.http.post('http://cuisoft.co/api/authenticate.php',formData);
   }
 
+  public datos(){
+      const datos = [
+        {id:"1", nombre:"nombre1",proceso:"proceso1",cedula:"1"},
+        {id:"2", nombre:"nombre2",proceso:"proceso2",cedula:"2"},
+        {id:"3", nombre:"nombre3",proceso:"proceso3",cedula:"3"},
+        {id:"4", nombre:"nombre4",proceso:"proceso4",cedula:"4"},
+        {id:"5", nombre:"nombre5",proceso:"proceso5",cedula:"5"},
+        {id:"6", nombre:"nombre6",proceso:"proceso6",cedula:"6"},
+        {id:"7", nombre:"nombre7",proceso:"proceso7",cedula:"7"},
+        {id:"8", nombre:"nombre8",proceso:"proceso8",cedula:"8"},
+        {id:"9", nombre:"nombre9",proceso:"proceso9",cedula:"9"},
+        {id:"10", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"11", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"12", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"13", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"14", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"15", nombre:"nombre0",proceso:"proceso0",cedula:"5"},
+        {id:"16", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"17", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"18", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"19", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        {id:"20", nombre:"nombre0",proceso:"proceso0",cedula:"0"},
+        
+      ];
+      return datos;
+  }
+
 
   public componentLibrary(componentName, dataJson) {
     var myNode = ``

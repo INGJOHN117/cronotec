@@ -1,0 +1,146 @@
+input {
+    height: auto;
+    width: 100%;
+    padding: 0vh 1vh;
+    margin-bottom: 3vh;
+    border: none;
+    background: transparent;
+    outline: none;
+    border-bottom: 2px solid #5C8EF5;
+    box-sizing: border-box;
+}
+
+
+.divBuscar{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+}
+
+.item{
+    width: 50px;
+    margin: 0px 30px 0px 0px;
+    position: relative;
+    /* border:2px solid #5C8EF5 */
+}
+
+div label {
+    position:absolute;
+    left:65%;
+}
+
+#radio {
+    position:absolute;
+    left:0%;
+}
+
+#cronograma {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    /*border: solid green;*/
+}
+
+table {
+    padding: 0px;
+    width: 100%;
+}
+
+table caption {
+    font-size: 4vh;
+    padding-bottom: 50px;
+}
+
+table .tht {
+    width: 40%;
+    font-size: 2.1vh;
+    background: #198503;
+    padding: 5px;
+}
+
+.thb {
+    /*background: white;*/
+    background: #198503;
+}
+
+table tr td {
+    border-radius: 5%;
+    font-size: 2vh;
+    padding: 5px;
+    width: 30%;
+    text-align: center;
+}
+
+.tdBtn {
+    padding: 0%;
+    width: auto;
+    background: white;
+    transition: 0.5s;
+}
+
+.imgEdit {
+    width: 5vw;
+    height: 5vh;
+    margin: 0%;
+    padding: 0%;
+}
+
+.tdBtn:hover {
+    background: white;
+    background: rgb(172, 172, 172);
+    border-radius: 10%;
+    transition: 0.5s;
+}
+
+.rowR {
+    /*background-color: rgb(136, 136, 136);*/
+    background-color: rgb(255, 154, 154);
+}
+
+.rowY {
+    background-color: rgb(255, 250, 136);
+}
+
+.rowG {
+    background-color: rgb(164, 255, 164);
+}
+
+.rowE {
+    background-color: rgb(175, 211, 255);
+}
+
+.testclass {
+    background: #f00;
+}
+
+@media screen and (max-width: 800px) {
+    #cronograma {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100vw;
+    }
+    table {
+        padding: 5vw auto;
+        margin: 5vw auto;
+        width: 90vw;
+    }
+    #oficinaTH {
+        /*
+        cuando la ventana principal se hace muy pequeña se 
+        limina la columna que tenga esta clase asignada
+        */
+        display: none;
+    }
+    .tht {
+        width: auto;
+    }
+    .thb {
+        width: auto;
+    }
+    table tr td {
+        padding: 0px;
+        text-align: center;
+    }
+}

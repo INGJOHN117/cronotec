@@ -21,7 +21,7 @@ export class CronogramaComponent implements OnInit {
       cedula:localStorage.getItem('cedula'),
       dataNeeds:["cronograma"]
     }).subscribe(data=>{
-      //this.cronograma.nativeElement.innerHTML = this.controller.componentLibrary("cronograma",data);
+      console.log("DATA ==>",data);
       this.listaEquipos = data[1];
     })
   }
