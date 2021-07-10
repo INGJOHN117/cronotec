@@ -33,6 +33,7 @@ export class HojasDeVidaComponent implements OnInit {
      */
     //data to filter
     this.arrayFilter = [];
+    //dataTypeFilter dtf
     const dtf = $event.target.value;
     let num = 0;
     if(this.typeFilter){
