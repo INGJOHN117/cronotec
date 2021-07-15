@@ -118,7 +118,7 @@
                         <input formControlName="fecharealizacion" type="date" name="fecharealizacion" id="fecharealizacion" value="">
                     </p>
                     <div *ngIf="registroSoporteForm.get('fecharealizacion').hasError('required') && registroSoporteForm.get('fecharealizacion').touched">
-                        <p style="color:red">Es necesario ingresar la fecha*</p>
+                        <p class="red">Es necesario ingresar la fecha*</p>
                         <br>
                     </div>
 
@@ -127,7 +127,7 @@
                         <option *ngFor="let persona of dataJson[2]" value="{{persona.cedula}}">{{persona.nombre}}</option>
                     </select>
                     <div *ngIf="registroSoporteForm.get('realizo').hasError('required') && registroSoporteForm.get('realizo').touched">
-                        <p style="color:red">Es necesario elejir un profesional de apoyo*</p>
+                        <p class="red">Es necesario elejir un profesional de apoyo*</p>
                         <br>
                     </div>
                     <p>
@@ -135,7 +135,7 @@
                         <textarea formControlName="observaciones" name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
                     </p>
                     <div *ngIf="registroSoporteForm.get('observaciones').hasError('required') && registroSoporteForm.get('observaciones').touched">
-                        <p style="color:red">Es necesario observaciones del soporte tecnico*</p>
+                        <p class="red">Es necesario observaciones del soporte tecnico*</p>
                         <br>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                         <input formControlName="usrresponsable" type="text" name="usrresponsable" id="usrresponsable" value="">
                     </p>
                     <div *ngIf="registroSoporteForm.get('usrresponsable').hasError('required') && registroSoporteForm.get('usrresponsable').touched">
-                        <p style="color:red">Es necesario es necesario el nombre del usuario responsable*</p>
+                        <p class="red">Es necesario es necesario el nombre del usuario responsable*</p>
                         <br>
                     </div>
                     <div #divcanvas id="dv" style="border:none" width="100%">

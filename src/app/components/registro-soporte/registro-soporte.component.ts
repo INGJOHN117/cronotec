@@ -86,7 +86,7 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     private route: ActivatedRoute,
     private _builder:FormBuilder
     ) { 
-    this.codigoActivo = route.snapshot.paramMap.get('codigoActivo');
+    this.codigoActivo = this.route.snapshot.paramMap.get('codigoActivo');
     this.registroSoporteForm = _builder.group({
       fecharealizacion:["",Validators.required],
       realizo:["",Validators.required],

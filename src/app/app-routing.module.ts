@@ -5,13 +5,15 @@ import { RegistroEquipoComponent } from './components/registro-equipo/registro-e
 import { RegistroSoporteComponent } from './components/registro-soporte/registro-soporte.component';
 import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.component';
 import { LoginComponent } from './components/login/login.component';
+import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'cronograma', component:CronogramaComponent},
   {path:'registroEquipo', component:RegistroEquipoComponent},
   {path:'registroSoporte/:codigoActivo', component:RegistroSoporteComponent},
-  {path:'hojasDeVida', component:HojasDeVidaComponent}
+  {path:'hojasDeVida', component:HojasDeVidaComponent},
+  {path:'hojaDeVida/:codigoActivo', component:HojaDeVidaComponent}
 ];
 
 @NgModule({

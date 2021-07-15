@@ -1,13 +1,13 @@
 <div id="formRegistro">
     <section id="cuerpo">
-        <h1 class="title-edit">REGISTRO NUEVO EQUIPO </h1>
-        <form [formGroup]="registroEquipoForm" (ngSubmit)="guardarRegistro(registroEquipoForm.value)">
+        <h1 class="title-edit">EDITAR HOJA DE VIDA </h1>
+        <form [formGroup]="editRegistroForm" (ngSubmit)="saveRecord(editRegistroForm.value)">
             <div class="section1">
                 <div class="v_div">
                     <label for="nombre-pc">Nombre pc</label>
                     <input formControlName="nombrepc" type="text" name="nombrepc" id="nombrepc" value="">
                 </div>
-                <div *ngIf="registroEquipoForm.get('nombrepc').hasError('required') && registroEquipoForm.get('nombrepc').touched">
+                <div *ngIf="editRegistroForm.get('nombrepc').hasError('required') && editRegistroForm.get('nombrepc').touched">
                     <p class="red">Es necesario ingresar la fecha*</p><br>
                 </div>
                 <h2>1. DATOS DEL EQUIPO</h2>
@@ -22,19 +22,19 @@
                         <tr>
                             <td>
                                 <input formControlName="marca" type="text" name="marca" id="marca" value="">
-                                <div *ngIf="registroEquipoForm.get('marca').hasError('required') && registroEquipoForm.get('marca').touched">
+                                <div *ngIf="editRegistroForm.get('marca').hasError('required') && editRegistroForm.get('marca').touched">
                                     <p class="red">Es necesario ingresar la marca*</p>
                                 </div>
                             </td>
                             <td>
                                 <input formControlName="proveedor" type="text" name="proveedor" id="proveedor" value="">
-                                <div *ngIf="registroEquipoForm.get('proveedor').hasError('required') && registroEquipoForm.get('proveedor').touched">
+                                <div *ngIf="editRegistroForm.get('proveedor').hasError('required') && editRegistroForm.get('proveedor').touched">
                                     <p class="red">es necesario ingresar el proveedor*</p>
                                 </div>
                             </td>
                             <td>
                                 <input formControlName="modelo" type="text" name="modelo" id="modelo" value="">
-                                <div *ngIf="registroEquipoForm.get('modelo').hasError('required') && registroEquipoForm.get('modelo').touched">
+                                <div *ngIf="editRegistroForm.get('modelo').hasError('required') && editRegistroForm.get('modelo').touched">
                                     <p class="red">es necesario ingresar el modelo*</p>
                                 </div>
                             </td>
@@ -62,50 +62,50 @@
                 <div class="v_div" style="width: 50%; padding: 2%;">
                     <label class="p_label" for="codigoActivo">Código Activo</label>
                     <input formControlName="codigoActivo" type="text" name="codigoActivo" id="codigoActivo" value="">
-                    <div *ngIf="registroEquipoForm.get('codigoActivo').hasError('required') && registroEquipoForm.get('codigoActivo').touched">
+                    <div *ngIf="editRegistroForm.get('codigoActivo').hasError('required') && editRegistroForm.get('codigoActivo').touched">
                         <p class="red">es necesario ingresar el codigoActivo*</p>
                     </div>
 
 
                     <label for="modeloCPU">Modelo CPU</label>
                     <input formControlName="modeloCPU" type="text" name="modeloCPU" id="modeloCPU" value="">
-                    <div *ngIf="registroEquipoForm.get('modeloCPU').hasError('required') && registroEquipoForm.get('modeloCPU').touched">
+                    <div *ngIf="editRegistroForm.get('modeloCPU').hasError('required') && editRegistroForm.get('modeloCPU').touched">
                         <p class="red">es necesario ingresar el modelo CPU*</p>
                     </div>
 
                     <label for="serialCPU">Serial CPU</label>
                     <input formControlName="serialCPU" type="text" name="serialCPU" id="serialCPU" value="">
-                    <div *ngIf="registroEquipoForm.get('serialCPU').hasError('required') && registroEquipoForm.get('serialCPU').touched">
+                    <div *ngIf="editRegistroForm.get('serialCPU').hasError('required') && editRegistroForm.get('serialCPU').touched">
                         <p class="red">es necesario ingresar el serialCPU*</p>
                     </div>
 
                     <label for="procesador">Procesador</label>
                     <input formControlName="procesador" type="text" name="procesador" id="procesador" value="">
-                    <div *ngIf="registroEquipoForm.get('procesador').hasError('required') && registroEquipoForm.get('procesador').touched">
+                    <div *ngIf="editRegistroForm.get('procesador').hasError('required') && editRegistroForm.get('procesador').touched">
                         <p class="red">es necesario ingresar el procesador*</p>
                     </div>
 
                     <label for="velocidadCPU">Velocidad CPU</label>
                     <input formControlName="velocidadCPU" type="text" name="velocidadCPU" id="velocidadCPU" value="">
-                    <div *ngIf="registroEquipoForm.get('velocidadCPU').hasError('required') && registroEquipoForm.get('velocidadCPU').touched">
+                    <div *ngIf="editRegistroForm.get('velocidadCPU').hasError('required') && editRegistroForm.get('velocidadCPU').touched">
                         <p class="red">es necesario ingresar el</p>
                     </div>
 
                     <label for="ram">Memoria RAM</label>
                     <input formControlName="ram" type="text" name="ram" id="ram" value="">
-                    <div *ngIf="registroEquipoForm.get('ram').hasError('required') && registroEquipoForm.get('ram').touched">
+                    <div *ngIf="editRegistroForm.get('ram').hasError('required') && editRegistroForm.get('ram').touched">
                         <p class="red">es necesario ingresar la ram*</p>
                     </div>
 
                     <label for="marcaDD">Marca DD</label>
                     <input formControlName="marcaDD" type="text" name="marcaDD" id="marcaDD" value="">
-                    <div *ngIf="registroEquipoForm.get('marcaDD').hasError('required') && registroEquipoForm.get('marcaDD').touched">
+                    <div *ngIf="editRegistroForm.get('marcaDD').hasError('required') && editRegistroForm.get('marcaDD').touched">
                         <p class="red">es necesario ingresar la marcaDD*</p>
                     </div>
 
                     <label for="capacidadDD">Capacidad Disco Duro</label>
                     <input formControlName="capacidadDD" type="text" name="capacidadDD" id="capacidadDD" value="">
-                    <div *ngIf="registroEquipoForm.get('capacidadDD').hasError('required') && registroEquipoForm.get('capacidadDD').touched">
+                    <div *ngIf="editRegistroForm.get('capacidadDD').hasError('required') && editRegistroForm.get('capacidadDD').touched">
                         <p class="red">es necesario ingresar la capacidad del DD*</p>
                     </div>
 
@@ -114,45 +114,45 @@
 
                     <label for="tecnologiaDD">Tecnologia DD</label>
                     <input formControlName="tecnologiaDD" type="text" name="tecnologiaDD" id="tecnologiaDD" value="">
-                    <div *ngIf="registroEquipoForm.get('tecnologiaDD').hasError('required') && registroEquipoForm.get('tecnologiaDD').touched">
+                    <div *ngIf="editRegistroForm.get('tecnologiaDD').hasError('required') && editRegistroForm.get('tecnologiaDD').touched">
                         <p class="red">es necesario ingresar la tecnologia del Disco Duro*</p>
                     </div>
 
 
                     <label for="monitor">Marca y/o modelo Monitor</label>
                     <input formControlName="mmMonitor" required type="text" name="mmMonitor" id="mmMonitor" value="">
-                    <div *ngIf="registroEquipoForm.get('mmMonitor').hasError('required') && registroEquipoForm.get('mmMonitor').touched">
+                    <div *ngIf="editRegistroForm.get('mmMonitor').hasError('required') && editRegistroForm.get('mmMonitor').touched">
                         <p class="red">es necesario ingresar la marca o modelo de el monitor*</p>
                     </div>
 
                     <label for="scMonitor">Serial Monitor / Cod Activo</label>
                     <input formControlName="scMonitor" type="text" name="scMonitor" id="scMonitor" value="">
-                    <div *ngIf="registroEquipoForm.get('scMonitor').hasError('required') && registroEquipoForm.get('scMonitor').touched">
+                    <div *ngIf="editRegistroForm.get('scMonitor').hasError('required') && editRegistroForm.get('scMonitor').touched">
                         <p class="red">es necesario ingresar serial o codigo activo Monitor*</p>
                     </div>
 
                     <label for="scTeclado">Marca y/o modelo Teclado</label>
                     <input formControlName="mmTeclado" type="text" name="mmTeclado" id="mmTeclado" value="">
-                    <div *ngIf="registroEquipoForm.get('mmTeclado').hasError('required') && registroEquipoForm.get('mmTeclado').touched">
+                    <div *ngIf="editRegistroForm.get('mmTeclado').hasError('required') && editRegistroForm.get('mmTeclado').touched">
                         <p class="red">es necesario ingresar la marca o modelo del teclado*</p>
                     </div>
 
                     <label for="scTeclado">Serial Teclado</label>
                     <input formControlName="scTeclado" type="text" name="scTeclado" id="scTeclado" value="">
-                    <div *ngIf="registroEquipoForm.get('scTeclado').hasError('required') && registroEquipoForm.get('scTeclado').touched">
+                    <div *ngIf="editRegistroForm.get('scTeclado').hasError('required') && editRegistroForm.get('scTeclado').touched">
                         <p class="red">es necesario ingresar el serialteclado*</p>
                     </div>
 
 
                     <label for="mmMouse">Marca y/o modelo Mouse</label>
                     <input formControlName="mmMouse" type="text" name="mmMouse" id="mmMouse" value="">
-                    <div *ngIf="registroEquipoForm.get('mmMouse').hasError('required') && registroEquipoForm.get('mmMouse').touched">
+                    <div *ngIf="editRegistroForm.get('mmMouse').hasError('required') && editRegistroForm.get('mmMouse').touched">
                         <p class="red">es necesario ingresar la marca o modelo del mouse*</p>
                     </div>
 
                     <label for="scMouse">Serial Mouse</label>
                     <input formControlName="scMouse" type="text" name="scMouse" id="scMouse" value="">
-                    <div *ngIf="registroEquipoForm.get('scMouse').hasError('required') && registroEquipoForm.get('scMouse').touched">
+                    <div *ngIf="editRegistroForm.get('scMouse').hasError('required') && editRegistroForm.get('scMouse').touched">
                         <p class="red">es necesario ingresar el serial o codigo activo del mouse*</p>
                     </div>
 
@@ -175,31 +175,31 @@
                     <tr>
                         <td>
                             <input formControlName="enRed" class="text-input-center" type="text" name="enRed" id="enRed" value="" placeholder="SI/NO">
-                            <div *ngIf="registroEquipoForm.get('enRed').hasError('required') && registroEquipoForm.get('enRed').touched">
+                            <div *ngIf="editRegistroForm.get('enRed').hasError('required') && editRegistroForm.get('enRed').touched">
                                 <p class="red">es necesario ingresar red</p>
                             </div>
                         </td>
                         <td>
                             <input formControlName="ip" class="text-input-center" type="text" name="ip" id="ip" value="" placeholder="IP">
-                            <div *ngIf="registroEquipoForm.get('ip').hasError('required') && registroEquipoForm.get('ip').touched">
+                            <div *ngIf="editRegistroForm.get('ip').hasError('required') && editRegistroForm.get('ip').touched">
                                 <p class="red">es necesario ingresar ip</p>
                             </div>
                         </td>
                         <td>
                             <input formControlName="mac" class="text-input-center" type="text" name="mac" id="mac" value="" placeholder="MAC">
-                            <div *ngIf="registroEquipoForm.get('mac').hasError('required') && registroEquipoForm.get('mac').touched">
+                            <div *ngIf="editRegistroForm.get('mac').hasError('required') && editRegistroForm.get('mac').touched">
                                 <p class="red">es necesario ingresar mac</p>
                             </div>
                         </td>
                         <td>
                             <input formControlName="velocidadTR" class="text-input-center" type="text" name="velocidadTR" id="velocidadTR" value="" placeholder="Velocidad Tarjeta red">
-                            <div *ngIf="registroEquipoForm.get('velocidadTR').hasError('required') && registroEquipoForm.get('velocidadTR').touched">
+                            <div *ngIf="editRegistroForm.get('velocidadTR').hasError('required') && editRegistroForm.get('velocidadTR').touched">
                                 <p class="red">es necesario ingresar velocidad tarjeta de red</p>
                             </div>
                         </td>
                         <td>
                             <input formControlName="marcaTR" class="text-input-center" type="text" name="marcaTR" id="marcaTR" value="" placeholder="Marca Tarjata red">
-                            <div *ngIf="registroEquipoForm.get('marcaTR').hasError('required') && registroEquipoForm.get('marcaTR').touched">
+                            <div *ngIf="editRegistroForm.get('marcaTR').hasError('required') && editRegistroForm.get('marcaTR').touched">
                                 <p class="red">es necesario ingresar marca tarjeta de red</p>
                             </div>
                         </td>
@@ -214,8 +214,8 @@
             <br>
             <div class="v_div">
                 <label for="so">Descripción</label>
-                <input formControlName="so" type="text" name="so" id="so" value="" (click)="saludo()" placeholder="Sistema Operativo">
-                <div *ngIf="registroEquipoForm.get('so').hasError('required') && registroEquipoForm.get('so').touched">
+                <input formControlName="so" type="text" name="so" id="so" value="" placeholder="Sistema Operativo">
+                <div *ngIf="editRegistroForm.get('so').hasError('required') && editRegistroForm.get('so').touched">
                     <p class="red">es necesario ingresar el sistema operativo</p>
                 </div>
             </div>
@@ -231,13 +231,13 @@
                     <tr>
                         <td>
                             <input formControlName="fechaEntrega" class="text-input-center" type="date" name="fechaEntrega" id="fechaEntrega">
-                            <div *ngIf="registroEquipoForm.get('fechaEntrega').hasError('required') && registroEquipoForm.get('fechaEntrega').touched">
+                            <div *ngIf="editRegistroForm.get('fechaEntrega').hasError('required') && editRegistroForm.get('fechaEntrega').touched">
                                 <p class="red">es necesario ingresar la fecha de entrega del equipo</p>
                             </div>
                         </td>
                         <td>
-                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" (keyup)="buscarusuario($event)" placeholder="cedula Usuario">
-                            <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
+                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" placeholder="cedula Usuario">
+                            <div *ngIf="editRegistroForm.get('cedula').hasError('required') && editRegistroForm.get('cedula').touched">
                                 <p class="red">es necesario ingresar cedula del usuario responsable</p>
                             </div>
                         </td>
@@ -253,13 +253,13 @@
                         <tr>
                             <td>
                                 <input formControlName="fechaEntrega" class="text-input-center" type="date" name="fechaEntrega" id="fechaEntrega">
-                                <div *ngIf="registroEquipoForm.get('fechaEntrega').hasError('required') && registroEquipoForm.get('fechaEntrega').touched">
+                                <div *ngIf="editRegistroForm.get('fechaEntrega').hasError('required') && editRegistroForm.get('fechaEntrega').touched">
                                     <p class="red">es necesario ingresar la fecha de entrega del equipo</p>
                                 </div>
                             </td>
                             <td>
                                 <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value=""  placeholder="cedula Usuario">
-                                <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
+                                <div *ngIf="editRegistroForm.get('cedula').hasError('required') && editRegistroForm.get('cedula').touched">
                                     <p class="red">es necesario ingresar cedula del usuario responsable</p>
                                 </div>
                             </td>
@@ -272,7 +272,7 @@
                         <label for="canvas">Firma Usuario Responsable</label>
                         <canvas #canvas id="canvas" style="border:solid black 2px; box-sizing: border-box;"></canvas>
                     </div>
-                    <button id="clearFirm" type="button" name="button" (click)="borrarFirma()" class="boton_personalizado">Borrar firma</button>
+                    <button id="clearFirm" type="button" name="button" class="boton_personalizado">Borrar firma</button>
                     <button id="send-firm" type="button" name="button" style="display: none">Enviar Firma</button>
                     <textarea #dataImage formControlName="dataImage" id="dataImage" name="dataImage" width="100%" style="display: none">
                     </textarea>

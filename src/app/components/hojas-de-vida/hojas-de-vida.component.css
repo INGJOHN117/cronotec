@@ -10,14 +10,13 @@ input {
     box-sizing: border-box;
 }
 
-
-.divBuscar{
+.divBuscar {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: flex-start;
 }
 
-.item{
+.item {
     width: 50px;
     margin: 0px 30px 0px 0px;
     position: relative;
@@ -25,13 +24,13 @@ input {
 }
 
 div label {
-    position:absolute;
-    left:65%;
+    position: absolute;
+    left: 65%;
 }
 
 #radio {
-    position:absolute;
-    left:0%;
+    position: absolute;
+    left: 0%;
 }
 
 #cronograma {
@@ -44,7 +43,11 @@ div label {
 
 table {
     padding: 0px;
+    margin: 0px;
     width: 100%;
+    border-left: solid #e3fcde;
+    border-right: solid #e3fcde;
+    border-bottom: solid #e3fcde;
 }
 
 table caption {
@@ -112,6 +115,16 @@ table tr td {
 
 .testclass {
     background: #f00;
+}
+
+.gris {
+    background-color: rgb(238, 250, 215);
+    /* background-color: rgb(241, 255, 214); */
+}
+
+.white {
+    /* background-color: rgb(146, 187, 165); */
+    background-color: #fff;
 }
 
 @media screen and (max-width: 800px) {

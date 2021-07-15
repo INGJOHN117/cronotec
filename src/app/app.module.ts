@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistroSoporteComponent,
     RegistroEquipoComponent,
     LoginComponent,
-    HojasDeVidaComponent
+    HojasDeVidaComponent,
+    HojaDeVidaComponent
   ],
   imports: [
     BrowserModule,

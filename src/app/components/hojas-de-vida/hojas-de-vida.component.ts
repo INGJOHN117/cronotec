@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ControladorService } from 'src/app/servicios/controlador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hojas-de-vida',
@@ -11,8 +12,9 @@ export class HojasDeVidaComponent implements OnInit {
   data: any[] = [];
   arrayFilter:any[];
   typeFilter:string;
+  indexClass:number = 0;
 
-  constructor(private controller:ControladorService){
+  constructor(private controller:ControladorService, private router:Router){
    }
 
   ngOnInit(): void {
@@ -21,7 +23,6 @@ export class HojasDeVidaComponent implements OnInit {
       cedula:localStorage.getItem('cedula'),
       dataNeeds:["cronograma"]
     }).subscribe(data=>{
-      console.log("data==>",data);
       this.data = data[1];
       this.arrayFilter = this.data;
     })
@@ -34,11 +35,11 @@ export class HojasDeVidaComponent implements OnInit {
     //data to filter
     this.arrayFilter = [];
     //dataTypeFilter dtf
+    this.indexClass = 0;
     const dtf = $event.target.value;
     let num = 0;
     if(this.typeFilter){
       this.data.map(item =>{
-        console.log("MAPEANDO==>",item);
         switch(this.typeFilter){
           case 'nombre':
             if(item.nombrepc.includes(dtf)){this.arrayFilter.push(item)}
@@ -47,22 +48,42 @@ export class HojasDeVidaComponent implements OnInit {
             if(item.proceso.includes(dtf)){this.arrayFilter.push(item)}
             break;
           case 'usuario':
-            if(item.nombreResponsable  .includes(dtf)){this.arrayFilter.push(item)}
+            if(item.nombreResponsable.includes(dtf)){this.arrayFilter.push(item)}
             break;
         }
       })
-    }else{console.log("selecciona un filtro")}
-    
-    console.log(this.arrayFilter)
-    //console.log(`[${num}] coincidencias encontradas`);
+    }
+    else{
+      window.alert("Selecciona un filtro");
+      console.log("selecciona un filtro");
+    }
   }
+
   changeFilter($event){
+    this.indexClass = 0;
     const value = $event.target.value;
     this.typeFilter = value;
   }
-  defineClassRow(value){
 
+  defineClassRow(value?:number){
+    let clase = ""; 
+    if(value){
+      this.indexClass += value;
+    }
+    if(this.indexClass % 2 > 0){
+      clase = "gris";
+    }else{
+      clase = "white";
+    }
+    this.indexClass += 1;
+    console.log(this.indexClass)
+    return clase;
   }
   registroSoporte(values){}
+
+  myrouter(id){
+    console.log("id de la tabla",id);
+    this.router.navigate([`hojaDeVida`,id]);
+  }
 
 }
