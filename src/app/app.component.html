@@ -1,6 +1,7 @@
 <div id="masterTag">
-    <app-menu-nav></app-menu-nav>
-    <div id="contenedor">
+    <app-login *ngIf="!sesion" (emitSession)="updateSession($event)"></app-login>
+    <app-menu-nav *ngIf="sesion" (emitSession)="updateSession($event)"></app-menu-nav>
+    <div *ngIf="sesion" id="contenedor">
         <router-outlet></router-outlet>
     </div>
 </div>

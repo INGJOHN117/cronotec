@@ -9,6 +9,7 @@
                 <a name="cronograma" [routerLink]="['cronograma']" class="page" *ngIf="sesion">CRONOGRAMA</a>
                 <a name="nuevoEquipo" [routerLink]="['registroEquipo']" class="page" *ngIf="sesion">NUEVO EQUIPO</a>
                 <a name="hojaDeVida" [routerLink]="['hojasDeVida']" class="page" *ngIf="sesion">HOJAS DE VIDA</a>
+                <a name="vehiculos" [routerLink]="['vehiculos']" class="page" *ngIf="sesion">VEHICULOS</a>
                 <a name="inactivos" [routerLink]="['login']" class="page" *ngIf="!sesion">LOGIN</a>
                 <a name="inactivos" [routerLink]="['login']" class="page" *ngIf="sesion" (click)="logout()">LOGOUT</a>
             </ul>

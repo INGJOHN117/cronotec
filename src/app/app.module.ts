@@ -12,6 +12,7 @@ import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.c
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
+import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.comp
     RegistroEquipoComponent,
     LoginComponent,
     HojasDeVidaComponent,
-    HojaDeVidaComponent
+    HojaDeVidaComponent,
+    VehiculosComponent
   ],
   imports: [
     BrowserModule,

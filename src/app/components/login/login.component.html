@@ -1,10 +1,15 @@
-<div id="cotenedor2">
-    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+<div id="contenedor2">
+    <div>
         <img src="./assets/img/big.png" alt="">
-        <input type="text" formControlName="user" id="user" name="user" placeholder="Name User">
-        <div *ngIf="loginForm.get('user').hasError('required') && loginForm.get('user').touched">Es necesario ingresar un usuario</div>
-        <input type="password" formControlName="password" id="password" name="password">
-        <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched ">Es necesario ingresar un password</div>
-        <button [disabled]="loginForm.invalid" type="submit" id="login">LOGIN</button>
-    </form>
+    </div>
+    <div>
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+
+            <input type="text" formControlName="user" id="user" name="user" placeholder="Name User">
+            <div *ngIf="loginForm.get('user').hasError('required') && loginForm.get('user').touched">Es necesario ingresar un usuario</div>
+            <input type="password" formControlName="password" id="password" name="password" placeholder="password">
+            <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched ">Es necesario ingresar un password</div>
+            <button [disabled]="loginForm.invalid" type="submit" id="login">LOGIN</button>
+        </form>
+    </div>
 </div>

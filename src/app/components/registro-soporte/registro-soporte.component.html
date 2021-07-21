@@ -143,7 +143,7 @@
                 <div>
                     <p>
                         <label for="usrresponsable">Responsable</label>
-                        <input formControlName="usrresponsable" type="text" name="usrresponsable" id="usrresponsable" value="">
+                        <input formControlName="usrresponsable" type="text" name="usrresponsable" id="usrresponsable" value="" placeholder="nombre de persona presente durante soporte tecnico">
                     </p>
                     <div *ngIf="registroSoporteForm.get('usrresponsable').hasError('required') && registroSoporteForm.get('usrresponsable').touched">
                         <p class="red">Es necesario es necesario el nombre del usuario responsable*</p>

@@ -1,5 +1,5 @@
 import { ControladorService } from './../../servicios/controlador.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-menu-nav',
@@ -8,10 +8,10 @@ import { Component, OnInit} from '@angular/core';
 })
 export class MenuNavComponent implements OnInit {
   sesion:boolean = false;
+  @Output() emitSession = new EventEmitter<boolean>();
 
   constructor(private controller:ControladorService) {
-    //console.log("CONSTRUCTOR NAV");
-    
+
   }
 
   ngOnInit(): void {
@@ -21,9 +21,10 @@ export class MenuNavComponent implements OnInit {
     })
     .subscribe(data => {
       if(data[0].estado){
-        this.sesion = true;
+        this.sesion = data[0].estado;
+
       }else{
-        this.sesion = false;
+        this.sesion = data[0].estado;
       }
     },error =>{
       console.log(error);
@@ -33,7 +34,7 @@ export class MenuNavComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.sesion=false;
-    //location.href = "/login";
+    this.emitSession.emit(false);
   }
 
 }
