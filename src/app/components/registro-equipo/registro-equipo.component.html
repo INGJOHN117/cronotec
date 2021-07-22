@@ -226,7 +226,9 @@
                 <table style="width: 100%;">
                     <tr>
                         <th><label> Fecha Entrega</label></th>
+                        <th><label>Proceso</label></th>
                         <th><label> Cedula Usuario Responsable</label></th>
+                        <th><label> Nombre</label></th>
                     </tr>
                     <tr>
                         <td>
@@ -236,10 +238,19 @@
                             </div>
                         </td>
                         <td>
-                            <input formControlName="cedula" class="text-input-center" type="text" name="cedula" id="cedula" value="" (keyup)="buscarusuario($event)" placeholder="cedula Usuario">
-                            <div *ngIf="registroEquipoForm.get('cedula').hasError('required') && registroEquipoForm.get('cedula').touched">
+                            <input formControlName="proceso" class="text-input-center" type="text" name="proceso" id="proceso" value="" placeholder="ubicacion dentro de la empresa">
+                            <div *ngIf="registroEquipoForm.get('proceso').hasError('required') && registroEquipoForm.get('proceso').touched">
+                                <p class="red">es necesario ingresar la ubicacion del equipo</p>
+                            </div>
+                        </td>
+                        <td>
+                            <input formControlName="cedulausr" class="text-input-center" type="number" name="cedulausr" id="cedulausr" value="" (keyup)="buscarusuario($event)" placeholder="cedula Usuario">
+                            <div *ngIf="registroEquipoForm.get('cedulausr').hasError('required') && registroEquipoForm.get('cedulausr').touched">
                                 <p class="red">es necesario ingresar cedula del usuario responsable</p>
                             </div>
+                        </td>
+                        <td>
+                            <input #nombreusr class="text-input-center" type="text" name="nombreusr" id="nombreusr" value="" placeholder="Nombre Usuario">
                         </td>
                     </tr>
                 </table>

@@ -1,5 +1,5 @@
 import { element } from 'protractor';
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ControladorService } from 'src/app/servicios/controlador.service';
@@ -9,19 +9,19 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
   templateUrl: './registro-equipo.component.html',
   styleUrls: ['./registro-equipo.component.css']
 })
-export class RegistroEquipoComponent implements OnInit {
+export class RegistroEquipoComponent implements OnInit,AfterViewInit{
 
   @ViewChild('divcanvas',{static:false}) contenedor:any;
   @ViewChild('canvas',{static:false}) canvas:any;
   @ViewChild('dataImage',{static:false}) dataImage:any;
   @ViewChild('imageFirm',{static:false}) imageFirm:any;
   @ViewChild('cedula',{static:false}) cedula:any;
-  @ViewChild('newUserdiv',{static:false}) newUserdiv:any;
+  @ViewChild('nombreusr',{static:false}) nombreusr:any;
 
 
   private ctx:CanvasRenderingContext2D;
   private points:Array<any> = [];
-  public usuarios:any = [];
+  public usuarios:any = {};
   public sistemas:any = [];
   public alto = 400;
   public divujando = false;
@@ -113,29 +113,28 @@ export class RegistroEquipoComponent implements OnInit {
       marcaTR:["",Validators.required],
       so:["",Validators.required],
       fechaEntrega:["",Validators.required],
-      cedula:["",Validators.required],
+      proceso:["",Validators.required],
+      cedulausr:["",Validators.required],
+      //nombreusr:[""],
       dataImage:[""],
       recomendaciones:[""]
     })
-
-    
-
    }
 
-  ngOnInit(): void { 
-    this.controller.post("http://cuisoft.co/api/getData.php",{
-      //user:localStorage.getItem('user'),
-      //cedula:localStorage.getItem('cedula'),  
-      dataNeeds:["usuarios","sistemas"]})
-    .subscribe(data =>{
-      console.log(data)
-      //debugger
-      this.sistemas = data[1];
-      this.usuarios = data[2];
-    })
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(){
+    console.log("REGISTRO EQUIPO")
+    this.controller.post("http://cuisoft.co/api/getData.php",{
+      user:localStorage.getItem('user'),
+      cedula:localStorage.getItem('cedula'),  
+      dataNeeds:["usuarioslitle","sistemas"]})
+    .subscribe(data =>{
+      console.log(data)
+      data[1].map(item => this.usuarios[item.cedula] = item);
+      this.sistemas = data[2];
+
+    })
     this.render();
   }
 
@@ -214,24 +213,21 @@ export class RegistroEquipoComponent implements OnInit {
     console.log(this.usuarios);
   }
   
-  buscarusuario(event:any){
-    //const cedula  = this.cedula.nativeElement;
-    //const newUserdiv = this.newUserdiv.nativeElement;
-    //console.log(event.target.value)
-    console.log(this.usuarios);
-    //console.log(this.usuarios.some(item => item.mombre == "Gerardo Torres"));
-    /*if(this.usuarios.some(item => item.cedula === "1000000")){
-      this.usuario = true;
-      console.log("esta");
+  buscarusuario($event:any){
+    const ccuser =  $event.target.value;
+    const nombreusr = this.nombreusr.nativeElement;
+    if(this.usuarios[ccuser]){
+      console.log("cedula encontrada")
+      nombreusr.value = this.usuarios[ccuser].nombre;
     }else{
-      this.usuario = false;
-      console.log("no esta");
-    }*/
+      console.log("cedula incorrecta");
+      nombreusr.value = "cedula inexistente";
+    }
+    
   }
 
   guardarRegistro(values){
-    //console.log(values)
-    //debugger
+    
 
     let nodos = this.callNodes();
     values['dataImage'] = nodos['canvas'].toDataURL();
@@ -248,11 +244,13 @@ export class RegistroEquipoComponent implements OnInit {
         return;
       }
     }
+    console.log(values)
+    debugger
     this.controller.post("http://cuisoft.co/api/setData.php",values)
     .subscribe(
       response =>{
         alert("Registro Exitoso, puedes verificarlo en las hojas de vida");
-        //this.router.navigate(['cronograma']);
+        this.router.navigate(['cronograma']);
         //debugger
       }
     )
