@@ -251,7 +251,6 @@ export class RegistroEquipoComponent implements OnInit,AfterViewInit{
       response =>{
         alert("Registro Exitoso, puedes verificarlo en las hojas de vida");
         this.router.navigate(['cronograma']);
-        //debugger
       }
     )
     debugger

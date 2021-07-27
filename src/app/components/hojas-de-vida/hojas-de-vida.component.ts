@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class HojasDeVidaComponent implements OnInit {
   data: any[] = [];
   arrayFilter:any[];
-  typeFilter:string;
+  typeFilter:string = "nombre";
   indexClass:number = 0;
 
   constructor(private controller:ControladorService, private router:Router){
@@ -34,21 +34,23 @@ export class HojasDeVidaComponent implements OnInit {
      */
     //data to filter
     this.arrayFilter = [];
-    //dataTypeFilter dtf
+    
     this.indexClass = 0;
+    //dataTypeFilter dtf
     const dtf = $event.target.value;
     let num = 0;
     if(this.typeFilter){
       this.data.map(item =>{
         switch(this.typeFilter){
           case 'nombre':
-            if(item.nombrepc.includes(dtf)){this.arrayFilter.push(item)}
+            //let nombre item.nombrepc.toLowerCase
+            if(item.nombrepc.toLowerCase().includes(dtf.toLowerCase())){this.arrayFilter.push(item)}
             break;
           case 'proceso':
-            if(item.proceso.includes(dtf)){this.arrayFilter.push(item)}
+            if(item.proceso.toLowerCase().includes(dtf.toLowerCase())){this.arrayFilter.push(item)}
             break;
           case 'usuario':
-            if(item.nombreResponsable.includes(dtf)){this.arrayFilter.push(item)}
+            if(item.nombreResponsable.toLowerCase().includes(dtf.toLowerCase())){this.arrayFilter.push(item)}
             break;
         }
       })
