@@ -1,0 +1,62 @@
+.show {
+    border-radius: 2%;
+    border: 2px solid green;
+    background: linear-gradient(70deg, rgb(234, 250, 225), white);
+    width: auto;
+    height: auto;
+    padding: 2vw;
+    position: fixed;
+    left: 55vw;
+    display: flex;
+    flex-direction: column;
+    transition: 0.9;
+}
+
+.notshow {
+    display: none;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(41, 41, 41)
+}
+
+input {
+    border: none;
+    outline: none;
+    margin: 10px;
+    border-bottom: 1px solid #5C8EF5;
+    font-size: 15px;
+}
+
+.divbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+button {
+    border: none;
+    border-radius: 10%;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+    color: white;
+}
+
+#btnGuardar {
+    /* background: linear-gradient(70deg, rgb(38, 196, 38), rgb(72, 187, 72)); */
+    background: linear-gradient(70deg, rgb(194, 247, 97), rgb(209, 252, 131));
+}
+
+#btnCancelar {
+    background: linear-gradient(70deg, rgb(241, 66, 66), rgb(243, 94, 94));
+}
+
+#btnGuardar:hover,
+#btnCancelar:hover {
+    background: rgb(230, 255, 210);
+    color: rgb(20, 2, 83);
+    border: 1px solid rgb(20, 2, 83);
+}

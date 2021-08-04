@@ -1,3 +1,4 @@
+import { TargetaRegistroComponent } from './components/targeta-registro/targeta-registro.component';
 import { CronogramaComponent } from './components/cronograma/cronograma.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'registroSoporte/:codigoActivo', component:RegistroSoporteComponent},
   {path:'hojasDeVida', component:HojasDeVidaComponent},
   {path:'hojaDeVida/:codigoActivo', component:HojaDeVidaComponent},
-  {path:'vehiculos', component:VehiculosComponent}
+  {path:'vehiculos', component:VehiculosComponent},
+  {path:'tarjetaRegistro', component:TargetaRegistroComponent},
 ];
 
 @NgModule({

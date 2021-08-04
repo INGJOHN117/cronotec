@@ -1,1 +1,59 @@
-<p>vehiculos works!</p>
+<div id="divvehiculos">
+    <div id="divtab">
+        <ul>
+            <li>
+                <p>Buses</p>
+            </li>
+            <li>
+                <p>Gps</p>
+            </li>
+            <li>
+                <p>Wifi</p>
+            </li>
+            <li>
+                <p>Internet</p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="contenidobus">
+        <div id="botonesbus">
+            <input id="inputbuscarbus" placeholder="Datos del Vehiculo" (keyup)="filterData($event)">
+            <label for="numerobus">Numero bus</label>
+            <input type="radio" name="filterbus" id="numerobus" value="numero" (click)="changeFilter($event)" checked>
+            <label for="placabus">Placa</label>
+            <input type="radio" name="filterbus" id="placabus" value="placa" (click)="changeFilter($event)">
+            <select placeholder="estado" (change)="changeStatus($event)">
+                <option value="todos">todos</option>
+                <option value="ACTIVO">activos</option>
+                <option value="INACTIVO">inactivos</option>
+                <option value="DESVINCULADO">desvinculados</option>
+            </select>
+        </div>
+        <div id="divtable">
+            <table>
+                <thead>
+                    <th>BUS</th>
+                    <th>PLACA</th>
+                    <th>ESTADO</th>
+                    <th>EDITAR</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bus of buses;let impar = odd;let par = even; let i = index;" [class]="defineClassRow(i)">
+                        <td>{{bus.numero}}</td>
+                        <td>{{bus.placa}}</td>
+                        <td>{{bus.estado}}</td>
+                        <td [class]="gris">
+                            <img class="imgEdit" src="./assets/img/edit-regular.svg" alt="" (click)="openEdit(bus)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div #divedit class="divedit">
+                <app-targeta-registro [id]="ews" [open]="showEdit" (emitClose)="closeEdit($event)"></app-targeta-registro>
+            </div>
+
+        </div>
+    </div>
+
+</div>

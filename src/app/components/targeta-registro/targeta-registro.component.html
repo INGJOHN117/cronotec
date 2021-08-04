@@ -1,0 +1,20 @@
+<div id="tarjetaregistro" [class]="{'notshow':!open ,'show':open}">
+    <h1>BUS: {{id.numero}}/ PLACA: {{id.placa}}</h1>
+    <h1>{{open}}</h1>
+    <input id="numero" [placeholder]="'Numero bus: '+id.numero">
+    <input id="placa" [placeholder]="'Placa bus: '+id.placa">
+    <select placeholder="estado">
+        <option value="ACTIVO">ACTIVAR</option>
+        <option value="INACTIVO">DESACTIVAR</option>
+        <option value="DESVINCULADO">DESVINCULAR</option>
+    </select>
+    <label for="soporte">debe seleccionar un sorporte</label>
+    <input type="file" id="soporte" name="sopote" accept="image/*, .doc, .docx, .pdf, .xls, .xlsx, .txt">
+
+    <div class="divbtn">
+        <button id="btnGuardar" (click)="abrir()">GUARDAR</button>
+        <button id="btnCancelar" (click)="cerrar()">CANCELAR</button>
+    </div>
+
+
+</div>

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
 import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
+import { TargetaRegistroComponent } from './components/targeta-registro/targeta-registro.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
     LoginComponent,
     HojasDeVidaComponent,
     HojaDeVidaComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    TargetaRegistroComponent
   ],
   imports: [
     BrowserModule,
