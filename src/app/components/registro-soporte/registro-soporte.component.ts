@@ -15,14 +15,14 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
   @ViewChild('dataImage',{static:false}) dataImage:any;
   @ViewChild('imageFirm',{static:false}) imageFirm:any;
 
-  private ctx:CanvasRenderingContext2D;
-  private points:Array<any> = [];
+  public ctx:CanvasRenderingContext2D;
+  public  points:Array<any> = [];
   public alto = 400;
   public divujando = false;
   public firmo = false;
   public codigoActivo:string;
   public dataJson:any;
-  registroSoporteForm:FormGroup;
+  public registroSoporteForm:FormGroup;
 
 
   @HostListener('document:mousedown',['$event'])
@@ -96,12 +96,12 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.controller.post("http://cuisoft.co/api/getData.php",{
       user:localStorage.getItem('user'),
       cedula:localStorage.getItem('cedula'),
       dataNeeds:["registroSoporte",this.codigoActivo,"sistemas"]
-    }).subscribe(datas=>{
+    }).subscribe( datas => {
       this.dataJson = datas;
     })
   }
@@ -190,10 +190,11 @@ export class RegistroSoporteComponent implements OnInit,AfterViewInit {
         return;
       }
     } 
-    
-    this.controller.post("http://cuisoft.co/api/setData.php",values)
+    console.log(values);
+    this.controller.post("https://cuisoft.co/api/setData.php",values)
     .subscribe(
       response =>{
+        console.log("RESPUESTA SERVIDOR",response);
         alert("Registro Exitoso puedes verificarlo en las hojas de vida");
         this.router.navigate(['cronograma']);
       }

@@ -53,7 +53,7 @@ export class CronogramaComponent implements OnInit {
 
   prinfPdf(id:string){
     //window.location.href = "http://cuisoft.co/prinfPdf2.php/?codigoActivo="+id;
-    let url = "http://cuisoft.co/api/pdf/prinfPdf.php/?codigoActivo="+id;
+    let url = `http://cuisoft.co/api/pdf/prinfPdf.php/?codigoActivo=${id}`;
     window.open(url);
   }
   

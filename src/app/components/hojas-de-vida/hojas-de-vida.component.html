@@ -24,11 +24,11 @@
             <th class="tht">USUARIO</th>
             <th class="thb"><img class="imgEdit" src="./assets/img/cogs-solid.svg" alt=""></th>
         </tr>
-        <tr *ngFor="let equipo of arrayFilter" [class]="defineClassRow()">
+        <tr *ngFor="let equipo of arrayFilter; let impar = odd;let par = even; let i = index;" [ngClass]="defineClassRow(i)">
             <td>{{equipo.nombrepc}}</td>
             <td id="oficinaTH">{{equipo.proceso}}</td>
             <td>{{equipo.nombreResponsable}}</td>
-            <td [class]="defineClassRow(1)" class="tdBtn" (click)="myrouter(equipo.codigoActivo)">
+            <td [class]="defineClassRow(i)" class="tdBtn" (click)="myrouter(equipo.codigoActivo)">
                 <img class="imgEdit" src="./assets/img/edit-regular.svg" alt="">
             </td>
         </tr>

@@ -6,14 +6,15 @@ import { HttpClient} from '@angular/common/http';
 })
 
 export class ControladorService {
+    public dataTable:Array<object>;
+    public dataTarget:Array<any>;
+    constructor(private http:HttpClient) { }
 
-  constructor(private http:HttpClient) { }
-
-  public get(url:string){
+    public get(url:string){
     return this.http.get(url);
-  }
+    }
 
-  public post(url:string, data:any){
+    public post(url:string, data:any){
     /*
     url: string => esta siempre sera una cadena de texto que indica la url
     del api  que provee  los datos 
@@ -32,17 +33,17 @@ export class ControladorService {
     }
     //debugger;
     return this.http.post(url,formData);
-  }
+    }
 
-  public searchSession(){
+    public searchSession(){
     var formData = new FormData();
     formData.append('user', localStorage.getItem('user'));
     formData.append('cedula', localStorage.getItem('cedula'));
     //return this.http.post('http://localhost/projects/ng/cronotec/src/app/php/authenticate.php',formData);
     return this.http.post('http://cuisoft.co/api/authenticate.php',formData);
-  }
+    }
 
-  public datos(){
+    public datos(){
       const datos = [
         {id:"1", nombre:"nombre1",proceso:"proceso1",cedula:"1"},
         {id:"2", nombre:"nombre2",proceso:"proceso2",cedula:"2"},
@@ -67,10 +68,10 @@ export class ControladorService {
         
       ];
       return datos;
-  }
+    }
 
 
-  public componentLibrary(componentName, dataJson) {
+    public componentLibrary(componentName, dataJson) {
     var myNode = ``
     switch (componentName) {
         case 'cronograma':
@@ -521,5 +522,5 @@ export class ControladorService {
              */
             return `<h1>vista predefinida</h1>`
     }
-}
+    }
 }

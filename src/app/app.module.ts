@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
 import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
 import { TargetaRegistroComponent } from './components/targeta-registro/targeta-registro.component';
+import { TablaDinamicaComponent } from './components/tabla-dinamica/tabla-dinamica.component';
+import { DinamicHostDirective } from './directives/dinamic-host.directive';
 
 
 @NgModule({
@@ -27,8 +29,11 @@ import { TargetaRegistroComponent } from './components/targeta-registro/targeta-
     HojasDeVidaComponent,
     HojaDeVidaComponent,
     VehiculosComponent,
-    TargetaRegistroComponent
+    TargetaRegistroComponent,
+    TablaDinamicaComponent,
+    DinamicHostDirective
   ],
+  entryComponents: [TablaDinamicaComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

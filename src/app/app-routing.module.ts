@@ -8,6 +8,7 @@ import { HojasDeVidaComponent } from './components/hojas-de-vida/hojas-de-vida.c
 import { LoginComponent } from './components/login/login.component';
 import { HojaDeVidaComponent } from './components/hoja-de-vida/hoja-de-vida.component';
 import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
+import { TablaDinamicaComponent } from './components/tabla-dinamica/tabla-dinamica.component';
 
 const routes: Routes = [
   {path:'cronograma', component:CronogramaComponent},
@@ -18,6 +19,8 @@ const routes: Routes = [
   {path:'hojaDeVida/:codigoActivo', component:HojaDeVidaComponent},
   {path:'vehiculos', component:VehiculosComponent},
   {path:'tarjetaRegistro', component:TargetaRegistroComponent},
+  {path:'tablaDinamica', component:TablaDinamicaComponent},
+  {path:'**',pathMatch:'full',redirectTo:'cronograma'}
 ];
 
 @NgModule({

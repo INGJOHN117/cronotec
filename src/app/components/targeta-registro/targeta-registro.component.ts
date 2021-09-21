@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 
 @Component({
@@ -7,26 +7,53 @@ import { ControladorService } from 'src/app/servicios/controlador.service';
   styleUrls: ['./targeta-registro.component.css']
 })
 export class TargetaRegistroComponent implements OnInit,AfterViewInit {
-  @Input() id:any;
-  @Input() open:any;
-  @Output() emitClose = new EventEmitter<boolean>();
-
+  public item:any;
+  public visible:boolean = true;
+  public key:string;
+  public switchButton:boolean = false;
+  @ViewChild('tipoevento') tipoeventoo:any;
+  @ViewChild('archivo') archivo:HTMLElement;
+  @ViewChild('descripcion') descripcion:HTMLElement;
+  
 
   constructor(private controller:ControladorService) { 
-    //this.showCard = this.id.estado
+     [this.item, this.visible, this.key] = this.controller.dataTarget;
   }
   
   ngOnInit(): void {}
 
-  ngAfterViewInit(){
+  ngAfterViewInit(){}
 
+  cerrar(){this.visible = false}
+
+  getText(){
+    switch(this.key){
+      case 'VEHICULO':
+        return 'DESVINCULAR';
+        break;
+      case 'GPS':
+        return 'RETIRAR GPS'
+        break;
+      case 'WIFI':
+        return 'DESACTIVAR LINEA'
+        break;
+    }
   }
 
-  cerrar(){
-    this.emitClose.emit(false);
+  enableButtons(){
+    this.switchButton = true;
   }
 
-  abrir(){
+  
+  guardarRegistro(){
+    this.controller.post("http://cuisoft.co/api/insertData.php",{
+      user:localStorage.getItem('user'),
+      cedula:localStorage.getItem('cedula'),
+      tableObjective:"eventosFacturacion"
+    })
+    .subscribe(data =>{
+      console.log(data);
+    })
   }
 
 }

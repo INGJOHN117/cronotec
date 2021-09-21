@@ -1,20 +1,23 @@
-<div id="tarjetaregistro" [class]="{'notshow':!open ,'show':open}">
-    <h1>BUS: {{id.numero}}/ PLACA: {{id.placa}}</h1>
-    <h1>{{open}}</h1>
-    <input id="numero" [placeholder]="'Numero bus: '+id.numero">
-    <input id="placa" [placeholder]="'Placa bus: '+id.placa">
-    <select placeholder="estado">
+<div id="tarjetaregistro" [class]="{'notshow':!visible ,'show':visible}">
+    <h1 style="text-align:center">{{key}}</h1>
+    <br>
+    <h1>BUS: {{item.BUS}} <br>PLACA: {{item.PLACA}}</h1>
+    <select #tipoevento placeholder="estado" (click)='enableButtons()'>
         <option value="ACTIVO">ACTIVAR</option>
         <option value="INACTIVO">DESACTIVAR</option>
-        <option value="DESVINCULADO">DESVINCULAR</option>
+        <option value="DESVINCULADO">{{getText()}}</option>
+        <option value="CAMBIOPROPIETARIO" *ngIf="key == 'VEHICULO'">CAMBIOPRO PIETARIO</option>
     </select>
+    <br>
     <label for="soporte">debe seleccionar un sorporte</label>
-    <input type="file" id="soporte" name="sopote" accept="image/*, .doc, .docx, .pdf, .xls, .xlsx, .txt">
-
+    <input #archivo (change)='enableButtons()' type="file" id="soporte" name="sopote" accept="image/*, .doc, .docx, .pdf, .xls, .xlsx, .txt">
+    <label for="descripcion" *ngIf="switchButton">Descripción</label>
+    <textarea #descripcion name="descripcion" id="descripcion" *ngIf="switchButton"></textarea>
     <div class="divbtn">
-        <button id="btnGuardar" (click)="abrir()">GUARDAR</button>
-        <button id="btnCancelar" (click)="cerrar()">CANCELAR</button>
+        <button id="btnGuardar" (click)="guardarRegistro()" *ngIf="switchButton">GUARDAR</button>
+        <button id="btnCancelar" (click)="cerrar()">{{switchButton ? 'CANCELAR' : 'CERRAR'}}</button>
     </div>
+
 
 
 </div>

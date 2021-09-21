@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ControladorService } from 'src/app/servicios/controlador.service';
 import { Router } from '@angular/router';
 
@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './hojas-de-vida.component.html',
   styleUrls: ['./hojas-de-vida.component.css']
 })
-export class HojasDeVidaComponent implements OnInit {
-  data: any[] = [];
-  arrayFilter:any[];
-  typeFilter:string = "nombre";
-  indexClass:number = 0;
+export class HojasDeVidaComponent implements OnInit, AfterViewInit {
+  public data: any[];
+  public arrayFilter:any[];
+  public typeFilter:string = "nombre";
+  public indexClass:number = 0;
 
-  constructor(private controller:ControladorService, private router:Router){
-   }
+  constructor(private controller:ControladorService, private router:Router){}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit(){
     this. controller.post("http://cuisoft.co/api/getData.php",{
       user:localStorage.getItem('user'),
       cedula:localStorage.getItem('cedula'),
@@ -26,6 +27,7 @@ export class HojasDeVidaComponent implements OnInit {
       this.data = data[1];
       this.arrayFilter = this.data;
     })
+
   }
 
   filterData($event){
@@ -69,16 +71,11 @@ export class HojasDeVidaComponent implements OnInit {
 
   defineClassRow(value?:number){
     let clase = ""; 
-    if(value){
-      this.indexClass += value;
-    }
-    if(this.indexClass % 2 > 0){
+    if(value % 2 > 0){
       clase = "gris";
     }else{
       clase = "white";
     }
-    this.indexClass += 1;
-    console.log(this.indexClass)
     return clase;
   }
   registroSoporte(values){}

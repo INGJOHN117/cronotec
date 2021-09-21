@@ -236,7 +236,7 @@ export class RegistroEquipoComponent implements OnInit,AfterViewInit{
     values["tableObjective"] = ["hojadevida","inventario"];
     for (var key in values) {
       if(values[key]==""){
-        alert("debe diligenciar el campo: "+ key)
+        alert(`debe diligenciar el campo: ${key}`)
         return;
       }
       if(!this.firmo){

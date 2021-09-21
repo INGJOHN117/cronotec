@@ -1,115 +1,11 @@
 <div id="formRegistro">
     <section id="cuerpo">
-        <h1 class="title-edit">REGISTRO SOPORTE ACTIVO N° {{dataJson[1][0].codigoActivo}}</h1>
+        <h1 class="title-edit">REGISTRO SOPORTE ACTIVO N° {{codigoActivo}}</h1>
         <form [formGroup]="registroSoporteForm" (ngSubmit)="guardarRegistro(registroSoporteForm.value)">
             <div class="v_div">
                 <label for="nombre-pc">Nombre pc</label>
-                <input type="text" name="nombrepc" id="nombrepc" value="{{dataJson[1][0].nombrepc}}" readonly>
+                <input type="text" name="nombrepc" id="nombrepc" [value]="dataJson !== undefined ? dataJson[1][0].nombrepc : 'UNDEFINED' " readonly>
             </div>
-            <!--
-            <h2>1. DATOS DEL EQUIPO</h2>
-            <br>
-            <div class="v_div">
-                <label for="marca">Marca</label>
-                <input required type="text" name="marca" id="marca" value="{{dataJson[1][0].marca}}" readonly>
-                <label for="proveedor">Proveedor</label>
-                <input type="text" name="proveedor" id="proveedor" value="{{dataJson[1][0].proveedor}}" readonly>
-                <label for="modelo">Modelo</label>
-                <input required type="text" name="modelo" id="modelo" value="{{dataJson[1][0].modelo}}" readonly>
-            </div>
-            <h2>2. CONFIGURACIÓN DE HARDWARE</h2>
-            <div id="divConfiguracionpc" class="h_div">
-                <div class="v_div" style="width: 50%; padding: 2%;">
-                    <label class="p_label" for="codigoActivo">Código Activo</label>
-                    <input required type="text" name="codigoActivo" id="codigoActivo" value="{{dataJson[1][0].codigoActivo}}" readonly>
-
-                    <label for="modeloCPU">Modelo CPU</label>
-                    <input required type="text" name="modeloCPU" id="modeloCPU" value="{{dataJson[1][0].modeloCPU}}" readonly>
-
-                    <label for="serialCPU">Serial CPU</label>
-                    <input required type="text" name="serialCPU" id="serialCPU" value="{{dataJson[1][0].serialCPU}}" readonly>
-
-                    <label for="procesador">Procesador</label>
-                    <input type="text" name="procesador" id="procesador" value="{{dataJson[1][0].procesador}}" readonly>
-
-                    <label for="velocidad">Velocidad CPU</label>
-                    <input type="text" name="velocidadProcesador" id="velocidadProcesador" value="{{dataJson[1][0].velocidadProcesador}}" readonly>
-
-                    <label for="ram">Memoria RAM</label>
-                    <input type="text" name="ram" id="ram" value="{{dataJson[1][0].ram}}" readonly>
-
-                    <label for="marcaDD">Marca DD</label>
-                    <input type="text" name="marcaDD" id="marcaDD" value="{{dataJson[1][0].marcaDD}}" readonly>
-
-                    <label for="capacidad">Capacidad DD</label>
-                    <input type="text" name="capacidadDD" id="capacidadDD" value="{{dataJson[1][0].capacidadDD}}" readonly>
-
-                </div>
-                <div class="v_div" style="width: 50%; padding: 2%;">
-
-                    <label for="tecnologia">Tecnologia DD</label>
-                    <input type="text" name="tecnologiaDD" id="tecnologiaDD" value="{{dataJson[1][0].tecnologiaDD}}" readonly>
-
-                    <label for="monitor">Marca y/o modelo Monitor</label>
-                    <input required type="text" name="mmMonitor" id="mmMonitor" value="{{dataJson[1][0].mmMonitor}}" readonly>
-
-                    <label for="serialmonitor">Serial Monitor / Cod Activo</label>
-                    <input required type="text" name="scMonitor" id="scMonitor" value="{{dataJson[1][0].scMonitor}}" readonly>
-
-                    <label for="teclado">Marca y/o modelo Teclado</label>
-                    <input type="text" name="mmTeclado" id="mmTeclado" value="{{dataJson[1][0].mmTeclado}}" readonly>
-
-                    <label for="serialteclado">Serial Teclado</label>
-                    <input type="text" name="scTeclado" id="scTeclado" value="{{dataJson[1][0].scTeclado}}" readonly>
-
-                    <label for="mouse">Marca y/o modelo Mouse</label>
-                    <input type="text" name="mmMouse" id="mmMouse" value="{{dataJson[1][0].mmMouse}}" readonly>
-
-                    <label for="serialmouse">Serial Mouse</label>
-                    <input type="text" name="scMouse" id="scMouse" value="{{dataJson[1][0].scMouse}}" readonly>
-
-                    <label for="otro">Otro</label>
-                    <input type="text" name="otro" id="otro" value="{{dataJson[1][0].otro}}" readonly>
-                </div>
-            </div>
-            <h2>3. CONFIGURACIÓN DE RED</h2>
-            <br>
-            <div class="v_div">
-                <table style="width: 100%;">
-                    <tr>
-                        <th><label>En red</label></th>
-                        <th><label>Dirección IP</label></th>
-                        <th><label>Dirección MAC</label></th>
-                        <th><label>Velocidad</label></th>
-                        <th><label>Marca</label></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input class="text-input-center" type="text" name="enRed" id="red" value="{{dataJson[1][0].enRed}}" readonly placeholder="SI/NO">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="text" name="ip" id="ip" value="{{dataJson[1][0].ip}}" readonly placeholder="IP">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="text" name="mac" id="mac" value="{{dataJson[1][0].mac}}" readonly placeholder="MAC">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="text" name="velocidadTR" id="velocidadtarjeta" value="{{dataJson[1][0].velocidadTR}}" readonly placeholder="Velocidad Tarjeta">
-                        </td>
-                        <td>
-                            <input class="text-input-center" type="text" name="marcaTR" id="marcatarjeta" value="{{dataJson[1][0].marcaTR}}" readonly placeholder="Marca Tarjata">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <h2>4. SISTEMA OPERATIVO INSTALADO</h2>
-            <br>
-            <div class="v_div">
-                <label for="so">Descripción</label>
-                <input type="text" name="so" id="so" value="{{dataJson[1][0].so}}" readonly placeholder="Sistema Operativo">
-            </div>
-        -->
             <h2>1. MANTENIMIENTO</h2>
             <div>
                 <div>
@@ -123,8 +19,8 @@
                     </div>
 
                     <label for="realizo">Realizó, Nombre del profesional de apoyo</label>
-                    <select formControlName="realizo" name="realizo" id="realizo">`
-                        <option *ngFor="let persona of dataJson[2]" value="{{persona.cedula}}">{{persona.nombre}}</option>
+                    <select formControlName="realizo" name="realizo" id="realizo" *ngIf="dataJson">
+                        <option *ngFor="let persona of dataJson[2]" [value]="persona.cedula">{{persona.nombre}}</option>
                     </select>
                     <div *ngIf="registroSoporteForm.get('realizo').hasError('required') && registroSoporteForm.get('realizo').touched">
                         <p class="red">Es necesario elejir un profesional de apoyo*</p>
@@ -174,24 +70,24 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="text-input-center" type="text" name="usrresponsable" id="usrresponsable" value="{{dataJson[1][0].nombre}}" readonly>
+                            <input class="text-input-center" type="text" name="usrresponsable" id="usrresponsable" [value]="dataJson !== undefined ? dataJson[1][0].nombre : 'UNDEFINED' " readonly>
                         </td>
                         <td>
-                            <input class="text-input-center" type="text" name="ubicacion" id="ubicacion" value="{{dataJson[1][0].proceso}}" readonly>
+                            <input class="text-input-center" type="text" name="ubicacion" id="ubicacion" [value]="dataJson !== undefined ? dataJson[1][0].proceso : 'UNDEFINED' " readonly>
                         </td>
                         <td class="padding-bottom-edit">
-                            <input class="text-input-center" type="date" name="fecha" id="fecha" value="{{dataJson[1][0].fechaEntrega}}" readonly>
+                            <input class="text-input-center" type="date" name="fecha" id="fecha" [value]="dataJson !== undefined ? dataJson[1][0].fechaEntrega : 'UNDEFINED' " readonly>
                         </td>
-                        <td>
-                            <img height="30px" src="{{dataJson[1][0].firma}}">
+                        <td *ngIf="dataJson">
+                            <img height="30px" [src]="dataJson[1][0].firma">
                         </td>
                     </tr>
                 </table>
             </div>
-            <h2><label for="recomendaciones" style="display: none;">3. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
+            <!-- <h2><label for="recomendaciones" style="display: none;">3. RECOMENDACIONES Y/O OBSERVACIONES</label></h2>
             <div class="v_div">
-                <textarea style="box-sizing: border-box; display:none;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>{{dataJson[1][0].recomendaciones}}</textarea>
-            </div>
+                <textarea style="box-sizing: border-box; display:none;" name="recomendaciones" name="recomendaciones" id="recomendaciones" rows="8" cols="80" readonly>sdfsdfdfsdf</textarea>
+            </div> -->
             <div class="button-container">
                 <!--<button [disabled]="registroSoporteForm.invalid" type="submit" class="boton_personalizado">GUARDAR</button>-->
                 <button type="submit" class="boton_personalizado">GUARDAR</button>
